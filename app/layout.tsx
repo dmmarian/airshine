@@ -24,6 +24,14 @@ export const metadata: Metadata = {
   title: "AirShine | Private Aviation Detailing",
   description:
     "Premium, aviation-safe interior and exterior detailing for private aircraft across Europe.",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.png",
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

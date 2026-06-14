@@ -50,8 +50,8 @@ const interiorLevels = [
     features: [
       "Everything in Level 1 — Basic",
       "Detailed seat & seatbelt cleaning",
-      "Carpet stain treatment",
-      "Lavatory disinfection — if equipped",
+      "Carpet stain cleaning",
+      "Lavatory deep steam cleaning — if equipped",
       "Leather treatment — if material allows",
       "Detailed cockpit cleaning — explicit approval, no critical systems",
     ],
@@ -69,14 +69,29 @@ const interiorPrices = [
 const exteriorLevels = [
   { level: "LEVEL 1", name: "Basic", price: "from €100" },
   { level: "LEVEL 2", name: "Standard", price: "from €200" },
-  { level: "LEVEL 3", name: "Full Dry Wash", price: "from €600", featured: true },
-  { level: "LEVEL 4", name: "Polish / Paint Correction", price: "Custom quote" },
+  {
+    level: "LEVEL 3",
+    name: "Full Dry Wash",
+    price: "from €600",
+    featured: true,
+  },
+  {
+    level: "LEVEL 4",
+    name: "Polish / Paint Correction",
+    price: "Custom quote",
+  },
 ];
 
 const exteriorRows = [
   ["Before/after & defect photo report", true, true, true, true],
   ["Exterior window cleaning: windshield + windows", true, true, true, true],
-  ["Dry wash of wing leading edges & tail surfaces", true, true, true, true],
+  [
+    "Dry wash of wing leading edges & tail surfaces (if accessible)",
+    true,
+    true,
+    true,
+    true,
+  ],
   ["Nose / radome / propeller; bug & dirt removal", true, true, true, true],
   ["Wheel cleaning", false, true, true, true],
   ["Dry wash of engine cowls / propeller area", false, true, true, true],
@@ -84,7 +99,13 @@ const exteriorRows = [
   ["Full fuselage dry wash", false, false, true, true],
   ["Full wing dry wash", false, false, true, true],
   ["Full aircraft belly dry wash", false, false, true, true],
-  ["Detailed defect / dent & buckle report", false, false, true, true],
+  [
+    "Detailed defect / dent & buckle report (not P145 / EASA approved)",
+    false,
+    false,
+    true,
+    true,
+  ],
   ["Fine scratch removal / polish", false, false, false, true],
 ] satisfies [string, boolean, boolean, boolean, boolean][];
 
@@ -254,7 +275,13 @@ function SectionIntro({
 
 function CheckIcon({ muted = false }: { muted?: boolean }) {
   return (
-    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M2.5 8 L6 11 L12.5 3.5"
         stroke={muted ? "#7FA3C8" : "#1F5C99"}
@@ -268,7 +295,13 @@ function CheckIcon({ muted = false }: { muted?: boolean }) {
 
 function ArrowDownIcon() {
   return (
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 13 13"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M6.5 1 V11 M2 7 L6.5 11.5 L11 7"
         stroke="currentColor"
@@ -283,16 +316,33 @@ function ArrowDownIcon() {
 function ProcessIcon({ name }: { name: string }) {
   if (name === "search") {
     return (
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        fill="none"
+        aria-hidden="true"
+      >
         <circle cx="13" cy="13" r="8.5" stroke="#1F5C99" strokeWidth="1.6" />
-        <path d="M19.2 19.2 L25 25" stroke="#1F5C99" strokeLinecap="round" strokeWidth="1.6" />
+        <path
+          d="M19.2 19.2 L25 25"
+          stroke="#1F5C99"
+          strokeLinecap="round"
+          strokeWidth="1.6"
+        />
       </svg>
     );
   }
 
   if (name === "clock") {
     return (
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        fill="none"
+        aria-hidden="true"
+      >
         <circle cx="15" cy="15" r="11" stroke="#1F5C99" strokeWidth="1.6" />
         <path
           d="M15 9 V15 L19 17.5"
@@ -306,7 +356,13 @@ function ProcessIcon({ name }: { name: string }) {
   }
 
   return (
-    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      aria-hidden="true"
+    >
       <circle cx="15" cy="15" r="11" stroke="#1F5C99" strokeWidth="1.6" />
       <path
         d="M9.5 15 L13.5 19 L20.5 11"
@@ -344,7 +400,10 @@ function PriceTable({
         <span>{note}</span>
       </div>
       <div className="airshine-table-scroll">
-        <table className="airshine-table" style={{ "--table-min": minWidth } as CSSProperties}>
+        <table
+          className="airshine-table"
+          style={{ "--table-min": minWidth } as CSSProperties}
+        >
           <thead>
             <tr>
               {headers.map((header) => (
@@ -356,7 +415,14 @@ function PriceTable({
             {rows.map((row) => (
               <tr key={row.join("-")}>
                 {row.map((cell, index) => (
-                  <td key={`${row[0]}-${cell}-${index}`} className={cell === "Custom" || cell === "Custom quote" ? "muted" : undefined}>
+                  <td
+                    key={`${row[0]}-${cell}-${index}`}
+                    className={
+                      cell === "Custom" || cell === "Custom quote"
+                        ? "muted"
+                        : undefined
+                    }
+                  >
                     {cell}
                   </td>
                 ))}
@@ -426,11 +492,21 @@ export default function Home() {
       <header className="airshine-header">
         <div className="airshine-header__inner">
           <a className="airshine-logo" href="#top" aria-label="AirShine home">
-            <Image src="/airshine-logo.png" alt="AirShine" width={119} height={30} priority />
+            <Image
+              src="/airshine-logo.png"
+              alt="AirShine"
+              width={119}
+              height={30}
+              priority
+            />
           </a>
           <nav className="airshine-nav" aria-label="Main navigation">
             {navLinks.map((link) => (
-              <a className="airshine-nav__link" href={link.href} key={link.href}>
+              <a
+                className="airshine-nav__link"
+                href={link.href}
+                key={link.href}
+              >
                 {link.label}
               </a>
             ))}
@@ -462,11 +538,16 @@ export default function Home() {
             or on the apron.
           </h1>
           <p data-delay="240" data-reveal>
-            Premium, aviation-safe interior and exterior detailing for private jets — from
-            single-engine aircraft to super-midsize cabins. Documented before and after.
-            Confirmed on-site.
+            Premium, aviation-safe interior and exterior detailing for private
+            jets — from single-engine aircraft to super-midsize cabins.
+            Documented before and after. Confirmed on-site.
           </p>
-          <a className="airshine-cta" data-delay="360" data-reveal href="#interior">
+          <a
+            className="airshine-cta"
+            data-delay="360"
+            data-reveal
+            href="#interior"
+          >
             VIEW SERVICES
             <ArrowDownIcon />
           </a>
@@ -476,21 +557,32 @@ export default function Home() {
       <Section id="about">
         <div
           className="airshine-grid"
-          style={{ "--min": "320px", "--gap": "clamp(40px, 6vw, 90px)" } as CSSProperties}
+          style={
+            {
+              "--min": "320px",
+              "--gap": "clamp(40px, 6vw, 90px)",
+            } as CSSProperties
+          }
         >
-          <SectionIntro eyebrow="Our Approach" title="Precision, documented — and confirmed on-site." />
+          <SectionIntro
+            eyebrow="Our Approach"
+            title="Precision, documented — and confirmed on-site."
+          />
           <div data-delay="120" data-reveal>
             <p className="airshine-copy" style={{ marginTop: 0 }}>
-              AirShine is a B2B detailing service built around aviation-grade products and
-              verifiable results. Every clean begins and ends with a photo report — before,
-              after, and any visible defects, scratches or dents we find along the way. Final
-              offers are confirmed only after an on-site inspection of configuration, condition
-              and access — never quoted blind.
+              AirShine is a B2B detailing service built around aviation-grade
+              products and verifiable results. Every clean begins and ends with
+              a photo report — before, after, and any visible defects, scratches
+              or dents we find along the way. Final offers are confirmed only
+              after an on-site inspection of configuration, condition and access
+              — never quoted blind.
             </p>
             <div className="airshine-approach-list">
               {approachItems.map((item, index) => (
                 <div className="airshine-approach-item" key={item.title}>
-                  <span className="airshine-number">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="airshine-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <div>
                     <div className="airshine-item-title">{item.title}</div>
                     <div className="airshine-item-copy">{item.copy}</div>
@@ -503,7 +595,7 @@ export default function Home() {
       </Section>
 
       <Section id="interior" soft>
-        <div style={{ maxWidth: 720 }}>
+        <div>
           <SectionIntro
             eyebrow="Interior Detailing"
             title="Two levels of cabin care."
@@ -513,7 +605,13 @@ export default function Home() {
 
         <div
           className="airshine-grid"
-          style={{ "--min": "330px", "--gap": "24px", marginTop: 52 } as CSSProperties}
+          style={
+            {
+              "--min": "330px",
+              "--gap": "24px",
+              marginTop: 52,
+            } as CSSProperties
+          }
         >
           {interiorLevels.map((level) => (
             <div
@@ -547,7 +645,11 @@ export default function Home() {
         </div>
 
         <PriceTable
-          headers={["Passenger category", "Level 1 · Basic", "Level 2 · Detailed"]}
+          headers={[
+            "Passenger category",
+            "Level 1 · Basic",
+            "Level 2 · Detailed",
+          ]}
           note="by passenger category (seats)"
           rows={interiorPrices}
           spacious
@@ -556,7 +658,7 @@ export default function Home() {
       </Section>
 
       <Section id="exterior">
-        <div style={{ maxWidth: 760 }}>
+        <div>
           <SectionIntro
             eyebrow="Exterior Detailing"
             title="Four exterior levels, dry-wash first."
@@ -594,8 +696,15 @@ export default function Home() {
                   <tr key={label}>
                     <td>{label}</td>
                     {[l1, l2, l3, l4].map((included, index) => (
-                      <td className={index === 2 ? "highlight" : undefined} key={`${label}-${index}`}>
-                        {included ? <CheckIcon /> : <span className="muted">–</span>}
+                      <td
+                        className={index === 2 ? "highlight" : undefined}
+                        key={`${label}-${index}`}
+                      >
+                        {included ? (
+                          <CheckIcon />
+                        ) : (
+                          <span className="muted">–</span>
+                        )}
                       </td>
                     ))}
                   </tr>
@@ -604,13 +713,19 @@ export default function Home() {
             </table>
           </div>
           <div className="airshine-table-note">
-            L4 fine scratch removal / polish is performed only after surface inspection, a local
-            test and written approval.
+            L4 fine scratch removal / polish is performed only after surface
+            inspection, a local test and written approval.
           </div>
         </div>
 
         <PriceTable
-          headers={["Category", "L1 Basic", "L2 Standard", "L3 Full Dry Wash", "L4 Polish"]}
+          headers={[
+            "Passenger category",
+            "L1 Basic",
+            "L2 Standard",
+            "L3 Full Dry Wash",
+            "L4 Polish",
+          ]}
           minWidth="620px"
           note="by passenger category (seats)"
           rows={exteriorPrices}
@@ -619,7 +734,7 @@ export default function Home() {
       </Section>
 
       <Section id="packages" dark>
-        <div style={{ maxWidth: 720 }}>
+        <div>
           <SectionIntro
             dark
             eyebrow="Packages"
@@ -636,7 +751,9 @@ export default function Home() {
               data-reveal
               key={item.title}
             >
-              {item.recommended ? <div className="airshine-badge">RECOMMENDED</div> : null}
+              {item.recommended ? (
+                <div className="airshine-badge">RECOMMENDED</div>
+              ) : null}
               <div className="airshine-package__kicker">{item.kicker}</div>
               <div className="airshine-package__title">{item.title}</div>
               <p className="airshine-package__copy">{item.copy}</p>
@@ -657,18 +774,20 @@ export default function Home() {
 
         <div className="airshine-package-summary" data-reveal>
           <p>
-            Example: a documented First Clean baseline across an 8-aircraft fleet runs around{" "}
+            Example: a documented First Clean baseline across an 8-aircraft
+            fleet runs around{" "}
             <strong data-count="11950" data-prefix="€">
               €11,950
             </strong>{" "}
-            ex-VAT. Per-aircraft pricing scales with passenger category — see the tables above.
+            ex-VAT. Per-aircraft pricing scales with passenger category — see
+            the tables above.
           </p>
           <span>PRICES IN EUR · EXCL. VAT · ESTIMATES</span>
         </div>
       </Section>
 
       <Section id="fleet">
-        <div style={{ maxWidth: 720 }}>
+        <div>
           <SectionIntro
             eyebrow="Fleet We Service"
             title="From single-engine to super-midsize."
@@ -678,7 +797,12 @@ export default function Home() {
 
         <div className="airshine-grid airshine-fleet">
           {fleetItems.map((item) => (
-            <div className="airshine-fleet-card" data-delay={item.delay} data-reveal key={item.cat}>
+            <div
+              className="airshine-fleet-card"
+              data-delay={item.delay}
+              data-reveal
+              key={item.cat}
+            >
               <div className="airshine-fleet-card__cat">{item.cat}</div>
               <div className="airshine-fleet-card__title">{item.title}</div>
               <div className="airshine-fleet-card__copy">{item.copy}</div>
@@ -689,12 +813,20 @@ export default function Home() {
 
       <Section id="process" soft>
         <div style={{ maxWidth: 720 }}>
-          <SectionIntro eyebrow="How It Works" title="Inspection. Baseline. Maintenance." />
+          <SectionIntro
+            eyebrow="How It Works"
+            title="Inspection. Baseline. Maintenance."
+          />
         </div>
 
         <div className="airshine-grid airshine-process">
           {processItems.map((item, index) => (
-            <div className="airshine-process-card" data-delay={item.delay} data-reveal key={item.title}>
+            <div
+              className="airshine-process-card"
+              data-delay={item.delay}
+              data-reveal
+              key={item.title}
+            >
               <div className="airshine-process-card__top">
                 <ProcessIcon name={item.icon} />
                 <span className="airshine-process-card__num">
@@ -710,12 +842,20 @@ export default function Home() {
 
       <Section id="safety">
         <div style={{ maxWidth: 720 }}>
-          <SectionIntro eyebrow="Safety & Products" title="Aviation-safe by default." />
+          <SectionIntro
+            eyebrow="Safety & Products"
+            title="Aviation-safe by default."
+          />
         </div>
 
         <div className="airshine-grid airshine-safety">
           {safetyItems.map((item) => (
-            <div className="airshine-safety-item" data-delay={item.delay} data-reveal key={item.title}>
+            <div
+              className="airshine-safety-item"
+              data-delay={item.delay}
+              data-reveal
+              key={item.title}
+            >
               <div className="airshine-safety-item__title">{item.title}</div>
               <p className="airshine-safety-item__copy">{item.copy}</p>
             </div>
@@ -723,7 +863,9 @@ export default function Home() {
         </div>
 
         <div className="airshine-grid airshine-adjustments" data-reveal>
-          <div className="airshine-adjustments__title">PRICING &amp; ADJUSTMENTS</div>
+          <div className="airshine-adjustments__title">
+            PRICING &amp; ADJUSTMENTS
+          </div>
           {adjustments.map((item) => (
             <div key={item.title}>
               <div className="airshine-adjustment__title">{item.title}</div>
@@ -734,7 +876,7 @@ export default function Home() {
       </Section>
 
       <Section id="contact" dark>
-        <div style={{ maxWidth: 680 }}>
+        <div>
           <SectionIntro
             dark
             eyebrow="Contact"
@@ -751,23 +893,30 @@ export default function Home() {
           </a>
           <div className="airshine-contact-card">
             <div className="airshine-contact-card__label">LOCATION</div>
-            <div className="airshine-contact-card__value">Bucharest, Romania</div>
+            <div className="airshine-contact-card__value">
+              Bucharest, Romania
+            </div>
           </div>
         </div>
 
         <p className="airshine-contact-note" data-reveal>
-          Estimated offers in EUR, excluding VAT. Final offer confirmed after on-site inspection
-          and approval of working procedures.
+          Estimated offers in EUR, excluding VAT. Final offer confirmed after
+          on-site inspection and approval of working procedures.
         </p>
       </Section>
 
       <footer className="airshine-footer">
         <div className="airshine-footer__inner">
           <div className="airshine-footer__brand">
-            <Image src="/airshine-logo-white.png" alt="AirShine" width={119} height={30} />
+            <Image
+              src="/airshine-logo-white.png"
+              alt="AirShine"
+              width={119}
+              height={30}
+            />
             <p>
-              Premium, aviation-safe interior and exterior detailing for private fleets across
-              Europe.
+              Premium, aviation-safe interior and exterior detailing for private
+              fleets across Europe.
             </p>
           </div>
           <div className="airshine-footer__links">
