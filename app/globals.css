@@ -536,20 +536,104 @@ select {
   color: #7c8b9b;
 }
 
+.airshine-exterior-selector {
+  margin-top: 48px;
+  position: relative;
+}
+
+.airshine-exterior-radio {
+  block-size: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
 .airshine-exterior-levels {
   margin-top: 48px;
   --min: 220px;
   --gap: 16px;
 }
 
+.airshine-exterior-selector .airshine-exterior-levels {
+  margin-top: 0;
+}
+
+.airshine-exterior-selector .airshine-table-card {
+  margin-top: 24px;
+}
+
 .airshine-mini-card {
   border: 1px solid #e4e9ee;
   border-radius: 12px;
+  cursor: pointer;
+  display: block;
   padding: 22px 24px;
+  transition: background 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .airshine-mini-card--featured {
-  border: 1.5px solid var(--airshine-ink);
+  border-color: #c8d7e6;
+  box-shadow: inset 0 3px 0 rgba(31, 92, 153, 0.14);
+}
+
+.airshine-mini-card:hover {
+  background: #f8fbfd;
+  transform: translateY(-2px);
+}
+
+#exterior-level-1:checked
+  ~ .airshine-exterior-levels
+  label[for="exterior-level-1"],
+#exterior-level-2:checked
+  ~ .airshine-exterior-levels
+  label[for="exterior-level-2"],
+#exterior-level-3:checked
+  ~ .airshine-exterior-levels
+  label[for="exterior-level-3"],
+#exterior-level-4:checked
+  ~ .airshine-exterior-levels
+  label[for="exterior-level-4"] {
+  background: #f6fafd;
+  border-color: var(--airshine-ink);
+  box-shadow: 0 10px 28px rgba(10, 37, 64, 0.1);
+  transform: translateY(-2px);
+}
+
+#exterior-level-3:checked
+  ~ .airshine-exterior-levels
+  label[for="exterior-level-3"] {
+  box-shadow: 0 10px 28px rgba(10, 37, 64, 0.1),
+    inset 0 3px 0 var(--airshine-blue);
+}
+
+#exterior-level-1:focus-visible
+  ~ .airshine-exterior-levels
+  label[for="exterior-level-1"],
+#exterior-level-2:focus-visible
+  ~ .airshine-exterior-levels
+  label[for="exterior-level-2"],
+#exterior-level-3:focus-visible
+  ~ .airshine-exterior-levels
+  label[for="exterior-level-3"],
+#exterior-level-4:focus-visible
+  ~ .airshine-exterior-levels
+  label[for="exterior-level-4"] {
+  outline: 3px solid rgba(31, 92, 153, 0.32);
+  outline-offset: 4px;
+}
+
+.airshine-mini-card__top {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
 }
 
 .airshine-mini-card__kicker {
@@ -557,6 +641,18 @@ select {
   font-size: 11.5px;
   letter-spacing: 0.16em;
   color: var(--airshine-blue);
+}
+
+.airshine-mini-card__badge {
+  border: 1px solid #d9e3ed;
+  border-radius: 999px;
+  color: #5a6b7b;
+  flex: none;
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  text-transform: uppercase;
 }
 
 .airshine-mini-card__title {
@@ -610,7 +706,14 @@ select {
   font-size: 14.5px;
 }
 
-.airshine-matrix .highlight {
+#exterior-level-1:checked ~ .airshine-table-card .airshine-matrix th:nth-child(2),
+#exterior-level-1:checked ~ .airshine-table-card .airshine-matrix td:nth-child(2),
+#exterior-level-2:checked ~ .airshine-table-card .airshine-matrix th:nth-child(3),
+#exterior-level-2:checked ~ .airshine-table-card .airshine-matrix td:nth-child(3),
+#exterior-level-3:checked ~ .airshine-table-card .airshine-matrix th:nth-child(4),
+#exterior-level-3:checked ~ .airshine-table-card .airshine-matrix td:nth-child(4),
+#exterior-level-4:checked ~ .airshine-table-card .airshine-matrix th:nth-child(5),
+#exterior-level-4:checked ~ .airshine-table-card .airshine-matrix td:nth-child(5) {
   background: #f6fafd;
 }
 
@@ -692,6 +795,8 @@ select {
 
 .airshine-coverage-table .airshine-table {
   font-size: 14.5px;
+  min-width: 760px;
+  table-layout: fixed;
 }
 
 .airshine-coverage-table .airshine-table td:first-child {
@@ -701,16 +806,28 @@ select {
   font-weight: 500;
 }
 
+.airshine-coverage-table .airshine-table th:first-child,
+.airshine-coverage-table .airshine-table td:first-child {
+  width: 38%;
+}
+
 .airshine-coverage-table .airshine-table th:nth-child(2),
 .airshine-coverage-table .airshine-table td:nth-child(2) {
   font-family: var(--font-plex-mono), monospace;
   white-space: nowrap;
+  width: 16%;
+}
+
+.airshine-coverage-table .airshine-table th:nth-child(3),
+.airshine-coverage-table .airshine-table td:nth-child(3) {
+  width: 26%;
 }
 
 .airshine-coverage-table .airshine-table th:nth-child(4),
 .airshine-coverage-table .airshine-table td:nth-child(4) {
   text-align: right;
   white-space: nowrap;
+  width: 20%;
 }
 
 .airshine-coverage-extra-row {

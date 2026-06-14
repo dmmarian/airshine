@@ -69,7 +69,7 @@ const interiorPrices = [
 ];
 
 const exteriorLevels = [
-  { level: "LEVEL 1", name: "Basic", price: "from €100" },
+  { level: "LEVEL 1", name: "Basic*", price: "from €100" },
   { level: "LEVEL 2", name: "Standard", price: "from €200" },
   {
     level: "LEVEL 3",
@@ -501,16 +501,17 @@ function CoverageTable() {
               </tr>
             </thead>
             <tbody>
-              {coverageRoutes.map((row, index) => (
+              {coverageRoutes.map(([airport, icao, locality, fee], index) => (
                 <tr
                   className={
                     index >= 4 ? "airshine-coverage-extra-row" : undefined
                   }
-                  key={row.join("-")}
+                  key={`${airport}-${icao}`}
                 >
-                  {row.map((cell, cellIndex) => (
-                    <td key={`${row[0]}-${cellIndex}`}>{cell}</td>
-                  ))}
+                  <td>{airport}</td>
+                  <td>{icao}</td>
+                  <td>{locality}</td>
+                  <td>{fee}</td>
                 </tr>
               ))}
             </tbody>
@@ -743,62 +744,92 @@ export default function Home() {
           />
         </div>
 
-        <div className="airshine-grid airshine-exterior-levels" data-reveal>
-          {exteriorLevels.map((level) => (
-            <div
-              className={`airshine-mini-card${level.featured ? " airshine-mini-card--featured" : ""}`}
-              key={level.name}
-            >
-              <div className="airshine-mini-card__kicker">{level.level}</div>
-              <div className="airshine-mini-card__title">{level.name}</div>
-              <div className="airshine-mini-card__price">{level.price}</div>
-            </div>
-          ))}
-        </div>
+        <div className="airshine-exterior-selector" data-reveal>
+          {exteriorLevels.map((level, index) => {
+            const levelNumber = index + 1;
+            const inputId = `exterior-level-${levelNumber}`;
 
-        <div className="airshine-table-card" data-reveal>
-          <div className="airshine-table-scroll">
-            <table className="airshine-table airshine-matrix">
-              <thead>
-                <tr>
-                  <th>What&apos;s included</th>
-                  <th>L1</th>
-                  <th>L2</th>
-                  <th className="highlight">L3</th>
-                  <th>L4</th>
-                </tr>
-              </thead>
-              <tbody>
-                {exteriorRows.map(([label, l1, l2, l3, l4]) => (
-                  <tr key={label}>
-                    <td>{label}</td>
-                    {[l1, l2, l3, l4].map((included, index) => (
-                      <td
-                        className={index === 2 ? "highlight" : undefined}
-                        key={`${label}-${index}`}
-                      >
-                        {included ? (
-                          <CheckIcon />
-                        ) : (
-                          <span className="muted">–</span>
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            return (
+              <input
+                aria-label={`${level.level} ${level.name}`}
+                className="airshine-exterior-radio"
+                defaultChecked={levelNumber === 3}
+                id={inputId}
+                key={inputId}
+                name="exterior-level"
+                type="radio"
+              />
+            );
+          })}
+
+          <div className="airshine-grid airshine-exterior-levels">
+            {exteriorLevels.map((level, index) => {
+              const levelNumber = index + 1;
+
+              return (
+                <label
+                  className={`airshine-mini-card${level.featured ? " airshine-mini-card--featured" : ""}`}
+                  htmlFor={`exterior-level-${levelNumber}`}
+                  key={level.name}
+                >
+                  <div className="airshine-mini-card__top">
+                    <div className="airshine-mini-card__kicker">
+                      {level.level}
+                    </div>
+                    {level.featured ? (
+                      <span className="airshine-mini-card__badge">
+                        Preferred
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="airshine-mini-card__title">{level.name}</div>
+                  <div className="airshine-mini-card__price">{level.price}</div>
+                </label>
+              );
+            })}
           </div>
-          <div className="airshine-table-note">
-            L4 fine scratch removal / polish is performed only after surface
-            inspection, a local test and written approval.
+
+          <div className="airshine-table-card">
+            <div className="airshine-table-scroll">
+              <table className="airshine-table airshine-matrix">
+                <thead>
+                  <tr>
+                    <th>What&apos;s included</th>
+                    <th>L1*</th>
+                    <th>L2</th>
+                    <th>L3</th>
+                    <th>L4</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {exteriorRows.map(([label, l1, l2, l3, l4]) => (
+                    <tr key={label}>
+                      <td>{label}</td>
+                      {[l1, l2, l3, l4].map((included, index) => (
+                        <td key={`${label}-${index}`}>
+                          {included ? (
+                            <CheckIcon />
+                          ) : (
+                            <span className="muted">–</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="airshine-table-note">
+              L4 fine scratch removal / polish is performed only after surface
+              inspection, a local test and written approval.
+            </div>
           </div>
         </div>
 
         <PriceTable
           headers={[
             "Passenger category",
-            "L1 Basic",
+            "L1 Basic*",
             "L2 Standard",
             "L3 Full Dry Wash",
             "L4 Polish",
@@ -812,7 +843,7 @@ export default function Home() {
 
         <div className="airshine-exterior-policy-note" data-reveal>
           <div className="airshine-table-note">
-            Exterior Level 1 Basic is available only when paired with an
+            * Exterior Level 1 Basic is available only when paired with an
             interior cleaning level. This keeps setup, travel and aircraft
             access efficient while giving the aircraft a complete maintenance
             refresh.
