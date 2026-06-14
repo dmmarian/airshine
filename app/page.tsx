@@ -508,8 +508,8 @@ function CoverageTable() {
                   }
                   key={row.join("-")}
                 >
-                  {row.map((cell) => (
-                    <td key={`${row[0]}-${cell}`}>{cell}</td>
+                  {row.map((cell, cellIndex) => (
+                    <td key={`${row[0]}-${cellIndex}`}>{cell}</td>
                   ))}
                 </tr>
               ))}
