@@ -6,6 +6,9 @@ const formatCount = (value: number) => Math.round(value).toLocaleString("en-US")
 
 export default function AirshineEnhancements() {
   useEffect(() => {
+    const counterTimers = new Set<number>();
+    const counterFrames = new Set<number>();
+
     document.querySelectorAll<HTMLElement>("[data-email-anchor]").forEach((anchor) => {
       const user = anchor.dataset.emailUser ?? "";
       const domain = anchor.dataset.emailDomain ?? "";
@@ -108,38 +111,44 @@ export default function AirshineEnhancements() {
       });
     };
 
-    const playCounters = () => {
-      counters.forEach((element, index) => {
-        if (element.dataset.counted) return;
+    const playCounter = (element: HTMLElement, index: number) => {
+      if (element.dataset.counted) return;
 
-        element.dataset.counted = "1";
-        const target = Number.parseFloat(element.dataset.count ?? "0");
-        const prefix = element.dataset.prefix ?? "";
-        const duration = 1200;
+      element.dataset.counted = "1";
+      const target = Number.parseFloat(element.dataset.count ?? "0");
+      const prefix = element.dataset.prefix ?? "";
+      const duration = 1200;
 
-        element.textContent = `${prefix}0`;
+      element.textContent = `${prefix}0`;
 
-        window.setTimeout(() => {
-          const start = performance.now();
+      const timer = window.setTimeout(() => {
+        counterTimers.delete(timer);
+        const start = performance.now();
 
-          const tick = (time: number) => {
-            let progress = Math.min(1, (time - start) / duration);
-            progress = 1 - Math.pow(1 - progress, 3);
-            element.textContent = `${prefix}${formatCount(target * progress)}`;
+        const tick = (time: number) => {
+          let progress = Math.min(1, (time - start) / duration);
+          progress = 1 - Math.pow(1 - progress, 3);
+          element.textContent = `${prefix}${formatCount(target * progress)}`;
 
-            if (progress < 1) {
-              requestAnimationFrame(tick);
-            }
-          };
+          if (progress < 1) {
+            const frame = requestAnimationFrame(tick);
+            counterFrames.add(frame);
+          }
+        };
 
-          requestAnimationFrame(tick);
-        }, 350 + index * 100);
-      });
+        const frame = requestAnimationFrame(tick);
+        counterFrames.add(frame);
+      }, 350 + index * 100);
+
+      counterTimers.add(timer);
     };
 
-    const run = () => {
+    const playCounters = () => {
+      counters.forEach(playCounter);
+    };
+
+    const playRevealsAndObserveCounters = () => {
       playReveals();
-      playCounters();
     };
 
     const finalize = () => {
@@ -148,14 +157,47 @@ export default function AirshineEnhancements() {
         element.style.opacity = "";
         element.style.transform = "";
       });
-
-      counters.forEach((element) => {
-        const target = Number.parseFloat(element.dataset.count ?? "0");
-        element.textContent = `${element.dataset.prefix ?? ""}${formatCount(target)}`;
-      });
     };
 
     let onVisibilityChange: (() => void) | null = null;
+    let counterObserver: IntersectionObserver | null = null;
+
+    const setupCounterObserver = () => {
+      if (!counters.length) return;
+
+      const IntersectionObserverConstructor = (
+        window as Window & {
+          IntersectionObserver?: typeof IntersectionObserver;
+        }
+      ).IntersectionObserver;
+
+      if (!IntersectionObserverConstructor) {
+        playCounters();
+        return;
+      }
+
+      counterObserver = new IntersectionObserverConstructor(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const element = entry.target as HTMLElement;
+            const index = counters.indexOf(element);
+
+            playCounter(element, Math.max(index, 0));
+            counterObserver?.unobserve(element);
+          });
+        },
+        {
+          rootMargin: "0px 0px -12% 0px",
+          threshold: 0.25,
+        },
+      );
+
+      counters.forEach((element) => counterObserver?.observe(element));
+    };
+
+    setupCounterObserver();
 
     if (document.hidden) {
       onVisibilityChange = () => {
@@ -163,19 +205,22 @@ export default function AirshineEnhancements() {
           if (onVisibilityChange) {
             document.removeEventListener("visibilitychange", onVisibilityChange);
           }
-          run();
+          playRevealsAndObserveCounters();
         }
       };
 
       document.addEventListener("visibilitychange", onVisibilityChange);
     } else {
-      run();
+      playRevealsAndObserveCounters();
     }
 
     const finalizeTimer = window.setTimeout(finalize, 2200);
 
     return () => {
       window.clearTimeout(finalizeTimer);
+      counterTimers.forEach((timer) => window.clearTimeout(timer));
+      counterFrames.forEach((frame) => window.cancelAnimationFrame(frame));
+      counterObserver?.disconnect();
       cleanupTableScrollCues.forEach((cleanup) => cleanup());
       if (onVisibilityChange) {
         document.removeEventListener("visibilitychange", onVisibilityChange);
