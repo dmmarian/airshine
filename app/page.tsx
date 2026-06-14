@@ -118,6 +118,9 @@ const exteriorPrices = [
   ["10+", "Custom", "Custom", "Custom", "Custom"],
 ];
 
+const airportFeesNote =
+  "Note: Airport, FBO, hangar or handler fees may be added where charged by the location.";
+
 const packages = [
   {
     kicker: "INT L1 · EXT L1",
@@ -382,6 +385,7 @@ function PriceTable({
   headers,
   rows,
   minWidth = "520px",
+  footnote,
   spacious = false,
 }: {
   title: string;
@@ -389,6 +393,7 @@ function PriceTable({
   headers: string[];
   rows: string[][];
   minWidth?: string;
+  footnote?: string;
   spacious?: boolean;
 }) {
   return (
@@ -432,6 +437,7 @@ function PriceTable({
           </tbody>
         </table>
       </div>
+      {footnote ? <div className="airshine-table-note">{footnote}</div> : null}
     </div>
   );
 }
@@ -625,6 +631,7 @@ export default function Home() {
             "Level 1 · Basic",
             "Level 2 · Detailed",
           ]}
+          footnote={airportFeesNote}
           note="by passenger category (seats)"
           rows={interiorPrices}
           spacious
@@ -701,6 +708,7 @@ export default function Home() {
             "L3 Full Dry Wash",
             "L4 Polish",
           ]}
+          footnote={airportFeesNote}
           minWidth="620px"
           note="by passenger category (seats)"
           rows={exteriorPrices}
@@ -750,9 +758,9 @@ export default function Home() {
         <div className="airshine-package-summary" data-reveal>
           <p>
             Per-aircraft pricing scales with passenger category — see the tables
-            above.
+            above. Airport fees may apply where charged by the location.
           </p>
-          <span>PRICES IN EUR · ESTIMATES</span>
+          <span>PRICES IN EUR · ESTIMATES · AIRPORT FEES MAY APPLY</span>
         </div>
       </Section>
 
@@ -870,8 +878,8 @@ export default function Home() {
         </div>
 
         <p className="airshine-contact-note" data-reveal>
-          Estimated offers in EUR. Final offer confirmed after on-site
-          inspection and approval of working procedures.
+          Estimated offers in EUR, excluding airport fees. Final offer confirmed
+          after on-site inspection and approval of working procedures.
         </p>
       </Section>
 
@@ -908,7 +916,7 @@ export default function Home() {
         </div>
         <div className="airshine-footer__bottom">
           <span>© 2025 AirShine. All rights reserved.</span>
-          <span>Prices estimated · EUR</span>
+          <span>Prices estimated · EUR · airport fees may apply</span>
         </div>
       </footer>
     </main>
