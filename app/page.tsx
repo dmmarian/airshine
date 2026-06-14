@@ -809,6 +809,15 @@ export default function Home() {
           rows={exteriorPrices}
           title="EXTERIOR PRICES · EUR · PER AIRCRAFT"
         />
+
+        <div className="airshine-exterior-policy-note" data-reveal>
+          <div className="airshine-table-note">
+            Exterior Level 1 Basic is available only when paired with an
+            interior cleaning level. This keeps setup, travel and aircraft
+            access efficient while giving the aircraft a complete maintenance
+            refresh.
+          </div>
+        </div>
       </Section>
 
       <Section id="packages" dark>

@@ -623,6 +623,18 @@ select {
   letter-spacing: 0.02em;
 }
 
+.airshine-exterior-policy-note {
+  margin-top: 14px;
+  background: #fff;
+  border: 1px solid #e4e9ee;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.airshine-exterior-policy-note .airshine-table-note {
+  border-top: 0;
+}
+
 .airshine-coverage-intro {
   align-items: start;
 }
