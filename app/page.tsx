@@ -479,7 +479,10 @@ function CoverageTable() {
         id="coverage-routes-toggle"
         type="checkbox"
       />
-      <div className="airshine-table-card airshine-table-card--spacious" data-reveal>
+      <div
+        className="airshine-table-card airshine-table-card--spacious"
+        data-reveal
+      >
         <div className="airshine-table-head">
           <strong>ROMANIA COVERAGE · TRAVEL FEES</strong>
           <span>estimated from LRBS</span>
@@ -500,7 +503,9 @@ function CoverageTable() {
             <tbody>
               {coverageRoutes.map((row, index) => (
                 <tr
-                  className={index >= 4 ? "airshine-coverage-extra-row" : undefined}
+                  className={
+                    index >= 4 ? "airshine-coverage-extra-row" : undefined
+                  }
                   key={row.join("-")}
                 >
                   {row.map((cell) => (
@@ -1040,7 +1045,7 @@ export default function Home() {
           </div>
         </div>
         <div className="airshine-footer__bottom">
-          <span>© 2025 AirShine. All rights reserved.</span>
+          <span>© 2026 AirShine. All rights reserved.</span>
           <span>Prices estimated · EUR · airport fees may apply</span>
         </div>
       </footer>
