@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:88px;}
+  body{font-family:'Hanken Grotesk',sans-serif;color:#0A2540;background:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
+  @keyframes rise{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+  @keyframes drift{0%,100%{transform:translate(-50%,-50%);}50%{transform:translate(-50%,calc(-50% - 16px));}}
+  a{color:inherit;text-decoration:none;}
+</style>
+</helmet>
+
+<div data-airshine style="background:#fff;">
+
+  <!-- ================= HEADER ================= -->
+  <header data-header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #E7ECF1;transition:box-shadow .3s ease;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:16px clamp(20px,5vw,72px);">
+      <a href="#top" style="display:flex;align-items:center;"><img src="assets/airshine-logo.png" alt="AirShine" style="height:30px;width:auto;display:block;"></a>
+      <nav style="display:flex;align-items:center;gap:clamp(16px,2.2vw,34px);flex-wrap:wrap;">
+        <a href="#interior" data-navlink="interior" style="font-family:'Jost',sans-serif;font-weight:500;font-size:15px;letter-spacing:.01em;color:#5A6B7B;border-bottom:1.5px solid transparent;padding-bottom:3px;transition:color .25s,border-color .25s;" style-hover="color:#0A2540;">Services</a>
+        <a href="#packages" data-navlink="packages" style="font-family:'Jost',sans-serif;font-weight:500;font-size:15px;letter-spacing:.01em;color:#5A6B7B;border-bottom:1.5px solid transparent;padding-bottom:3px;transition:color .25s,border-color .25s;" style-hover="color:#0A2540;">Packages</a>
+        <a href="#fleet" data-navlink="fleet" style="font-family:'Jost',sans-serif;font-weight:500;font-size:15px;letter-spacing:.01em;color:#5A6B7B;border-bottom:1.5px solid transparent;padding-bottom:3px;transition:color .25s,border-color .25s;" style-hover="color:#0A2540;">Fleet</a>
+        <a href="#process" data-navlink="process" style="font-family:'Jost',sans-serif;font-weight:500;font-size:15px;letter-spacing:.01em;color:#5A6B7B;border-bottom:1.5px solid transparent;padding-bottom:3px;transition:color .25s,border-color .25s;" style-hover="color:#0A2540;">Process</a>
+        <a href="#contact" data-navlink="contact" style="font-family:'Jost',sans-serif;font-weight:500;font-size:15px;letter-spacing:.01em;color:#5A6B7B;border-bottom:1.5px solid transparent;padding-bottom:3px;transition:color .25s,border-color .25s;" style-hover="color:#0A2540;">Contact</a>
+        <a href="tel:+40736070042" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.04em;color:#0A2540;border:1px solid #D7DEE6;border-radius:40px;padding:8px 16px;white-space:nowrap;transition:border-color .25s,background .25s;" style-hover="border-color:#0A2540;background:#F4F8FC;">+40 736 070 042</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section id="top" style="position:relative;overflow:hidden;min-height:clamp(600px,90vh,980px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(48px,7vw,96px) clamp(20px,5vw,72px) clamp(64px,8vw,110px);background:linear-gradient(180deg,#E5EEF8 0%,#EDF4FA 44%,#FAFCFE 100%);">
+    <img src="assets/airshine-jet.png" alt="" aria-hidden="true" style="position:absolute;top:34%;left:50%;width:min(1500px,150%);max-width:none;transform:translate(-50%,-50%);opacity:.05;pointer-events:none;user-select:none;animation:drift 15s ease-in-out infinite;">
+    <div aria-hidden="true" style="position:absolute;top:30%;left:50%;width:900px;height:520px;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(255,255,255,.85),rgba(255,255,255,0) 70%);pointer-events:none;"></div>
+
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center;max-width:900px;">
+      <div data-reveal data-delay="0" style="display:flex;align-items:center;gap:14px;margin-bottom:30px;">
+        <span style="width:26px;height:1px;background:#9AA8B6;"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:#1F5C99;">Private Aviation Detailing · Europe</span>
+        <span style="width:26px;height:1px;background:#9AA8B6;"></span>
+      </div>
+      <h1 data-reveal data-delay="120" style="font-family:'Jost',sans-serif;font-weight:500;font-size:clamp(40px,6.4vw,82px);line-height:1.02;letter-spacing:-.025em;color:#0A2540;text-wrap:balance;">A spotless fleet, at altitude<br>or on the apron.</h1>
+      <p data-reveal data-delay="240" style="font-size:clamp(17px,1.5vw,20px);line-height:1.62;color:#4D5F70;margin-top:28px;max-width:600px;text-wrap:pretty;">Premium, aviation-safe interior and exterior detailing for private jets — from single-engine aircraft to super-midsize cabins. Documented before and after. Confirmed on-site.</p>
+      <a href="#interior" data-reveal data-delay="360" style="margin-top:40px;display:inline-flex;align-items:center;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:#0A2540;border:1.5px solid #0A2540;border-radius:46px;padding:14px 30px;transition:background .3s,color .3s;" style-hover="background:#0A2540;color:#fff;">VIEW SERVICES
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="animation:floaty 2.4s ease-in-out infinite;"><path d="M6.5 1 V11 M2 7 L6.5 11.5 L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT / APPROACH ================= -->
+  <section id="about" data-section="about" data-screen-label="Approach" style="padding:clamp(80px,9vw,130px) clamp(20px,5vw,72px);border-top:1px solid #EEF2F5;">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(40px,6vw,90px);align-items:start;">
+      <div data-reveal>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:28px;height:1px;background:#9AA8B6;"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#1F5C99;">Our Approach</span></div>
+        <h2 style="font-family:'Jost',sans-serif;font-weight:600;font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.015em;color:#0A2540;text-wrap:balance;">Precision, documented — and confirmed on-site.</h2>
+      </div>
+      <div data-reveal data-delay="120">
+        <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.7;color:#45586A;text-wrap:pretty;">AirShine is a B2B detailing service built around aviation-grade products and verifiable results. Every clean begins and ends with a photo report — before, after, and any visible defects, scratches or dents we find along the way. Final offers are confirmed only after an on-site inspection of configuration, condition and access — never quoted blind.</p>
+        <div style="margin-top:38px;display:flex;flex-direction:column;">
+          <div style="display:flex;gap:22px;padding:20px 0;border-top:1px solid #EDF1F5;"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#1F5C99;padding-top:2px;">01</span><div><div style="font-family:'Jost',sans-serif;font-weight:600;font-size:18px;color:#0A2540;">Documented</div><div style="font-size:15px;color:#5A6B7B;margin-top:3px;">Before / after and defect photo reports on every aircraft.</div></div></div>
+          <div style="display:flex;gap:22px;padding:20px 0;border-top:1px solid #EDF1F5;"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#1F5C99;padding-top:2px;">02</span><div><div style="font-family:'Jost',sans-serif;font-weight:600;font-size:18px;color:#0A2540;">Aviation-safe</div><div style="font-size:15px;color:#5A6B7B;margin-top:3px;">Manufacturer-compatible products with SDS on file.</div></div></div>
+          <div style="display:flex;gap:22px;padding:20px 0;border-top:1px solid #EDF1F5;border-bottom:1px solid #EDF1F5;"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#1F5C99;padding-top:2px;">03</span><div><div style="font-family:'Jost',sans-serif;font-weight:600;font-size:18px;color:#0A2540;">Confirmed on-site</div><div style="font-size:15px;color:#5A6B7B;margin-top:3px;">Final scope and price are set after inspection of condition and access.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTERIOR ================= -->
+  <section id="interior" data-section="interior" data-screen-label="Interior services" style="padding:clamp(80px,9vw,130px) clamp(20px,5vw,72px);background:#F6F9FB;border-top:1px solid #EEF2F5;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-reveal style="max-width:720px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:28px;height:1px;background:#9AA8B6;"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#1F5C99;">Interior Detailing</span></div>
+        <h2 style="font-family:'Jost',sans-serif;font-weight:600;font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.015em;color:#0A2540;text-wrap:balance;">Two levels of cabin care.</h2>
+        <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:#45586A;margin-top:18px;">Both levels include a full photo report. Lavatory and cockpit work apply only where equipped and permitted.</p>
+      </div>
+
+      <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:24px;">
+        <!-- L1 -->
+        <div data-reveal style="background:#fff;border:1px solid #E4E9EE;border-radius:14px;padding:clamp(28px,3vw,40px);">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;">
+            <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;color:#1F5C99;">LEVEL 1</div><div style="font-family:'Jost',sans-serif;font-weight:600;font-size:26px;color:#0A2540;margin-top:6px;">Basic</div></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7C8B9B;text-align:right;">from<br><span style="font-family:'Jost';font-weight:600;font-size:22px;color:#0A2540;">€150</span></div>
+          </div>
+          <p style="font-size:15px;line-height:1.6;color:#5A6B7B;margin:18px 0 8px;">Essential cabin reset and a documented baseline.</p>
+          <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid #F0F3F6;font-size:15px;color:#3D4F60;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#1F5C99" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Before/after &amp; visible-defect photo report</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid #F0F3F6;font-size:15px;color:#3D4F60;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#1F5C99" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cabin vacuuming &amp; waste removal</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid #F0F3F6;font-size:15px;color:#3D4F60;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#1F5C99" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>High-touch surface wipe-down: tables, panels, cup holders</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid #F0F3F6;font-size:15px;color:#3D4F60;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#1F5C99" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Interior window &amp; windshield cleaning</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid #F0F3F6;font-size:15px;color:#3D4F60;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#1F5C99" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Light seat cleaning · cabin arrangement</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid #F0F3F6;font-size:15px;color:#3D4F60;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#1F5C99" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lavatory cleaning &amp; cockpit light wipe — if equipped / permitted</span></div>
+          </div>
+        </div>
+        <!-- L2 -->
+        <div data-reveal data-delay="120" style="background:#0A2540;border:1px solid #0A2540;border-radius:14px;padding:clamp(28px,3vw,40px);color:#fff;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;">
+            <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;color:#7FA3C8;">LEVEL 2</div><div style="font-family:'Jost',sans-serif;font-weight:600;font-size:26px;color:#fff;margin-top:6px;">Detailed</div></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9DB3CB;text-align:right;">from<br><span style="font-family:'Jost';font-weight:600;font-size:22px;color:#fff;">€300</span></div>
+          </div>
+          <p style="font-size:15px;line-height:1.6;color:#AFC0D0;margin:18px 0 8px;">Everything in Basic, plus deep cleaning and material care.</p>
+          <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px;color:#E4ECF3;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#7FA3C8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Everything in Level 1 — Basic</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px;color:#E4ECF3;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#7FA3C8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Detailed seat &amp; seatbelt cleaning</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px;color:#E4ECF3;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#7FA3C8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Carpet stain treatment</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px;color:#E4ECF3;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#7FA3C8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lavatory disinfection — if equipped</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px;color:#E4ECF3;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#7FA3C8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Leather treatment — if material allows</span></div>
+            <div style="display:flex;gap:11px;padding:10px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px;color:#E4ECF3;"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex:none;margin-top:3px;"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#7FA3C8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Detailed cockpit cleaning — explicit approval, no critical systems</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- interior price table -->
+      <div data-reveal style="margin-top:40px;background:#fff;border:1px solid #E4E9EE;border-radius:14px;overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:18px clamp(20px,3vw,32px);border-bottom:1px solid #EEF2F5;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;color:#5A6B7B;">INTERIOR PRICES · EUR · PER AIRCRAFT</span><span style="font-size:13px;color:#9AA8B6;">by passenger category (seats)</span></div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;min-width:520px;border-collapse:collapse;font-size:15px;">
+            <thead><tr style="text-align:left;color:#5A6B7B;font-family:'Jost';font-weight:600;">
+              <th style="padding:16px clamp(20px,3vw,32px);font-weight:600;">Passenger category</th>
+              <th style="padding:16px 20px;font-weight:600;">Level 1 · Basic</th>
+              <th style="padding:16px clamp(20px,3vw,32px);font-weight:600;">Level 2 · Detailed</th>
+            </tr></thead>
+            <tbody style="color:#0A2540;">
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">1–3</td><td style="padding:15px 20px;">€150</td><td style="padding:15px clamp(20px,3vw,32px);">€300</td></tr>
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">3–6</td><td style="padding:15px 20px;">€250</td><td style="padding:15px clamp(20px,3vw,32px);">€450</td></tr>
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">6–8</td><td style="padding:15px 20px;">€350</td><td style="padding:15px clamp(20px,3vw,32px);">€650</td></tr>
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">8–10</td><td style="padding:15px 20px;">€450</td><td style="padding:15px clamp(20px,3vw,32px);">€800</td></tr>
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">10+</td><td style="padding:15px 20px;color:#7C8B9B;">Custom quote</td><td style="padding:15px clamp(20px,3vw,32px);color:#7C8B9B;">Custom quote</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXTERIOR ================= -->
+  <section id="exterior" data-section="exterior" data-screen-label="Exterior services" style="padding:clamp(80px,9vw,130px) clamp(20px,5vw,72px);border-top:1px solid #EEF2F5;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-reveal style="max-width:760px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:28px;height:1px;background:#9AA8B6;"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#1F5C99;">Exterior Detailing</span></div>
+        <h2 style="font-family:'Jost',sans-serif;font-weight:600;font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.015em;color:#0A2540;text-wrap:balance;">Four exterior levels, dry-wash first.</h2>
+        <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:#45586A;margin-top:18px;">From a window-and-leading-edge refresh to a full dry wash and, on approval, fine paint correction. Wet wash is used only where the hangar permits water use and wastewater handling — otherwise we dry wash.</p>
+      </div>
+
+      <!-- level headers -->
+      <div data-reveal style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+        <div style="border:1px solid #E4E9EE;border-radius:12px;padding:22px 24px;"><div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.16em;color:#1F5C99;">LEVEL 1</div><div style="font-family:'Jost';font-weight:600;font-size:20px;color:#0A2540;margin-top:5px;">Basic</div><div style="font-size:13.5px;color:#7C8B9B;margin-top:6px;">from €100</div></div>
+        <div style="border:1px solid #E4E9EE;border-radius:12px;padding:22px 24px;"><div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.16em;color:#1F5C99;">LEVEL 2</div><div style="font-family:'Jost';font-weight:600;font-size:20px;color:#0A2540;margin-top:5px;">Standard</div><div style="font-size:13.5px;color:#7C8B9B;margin-top:6px;">from €200</div></div>
+        <div style="border:1.5px solid #0A2540;border-radius:12px;padding:22px 24px;position:relative;"><div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.16em;color:#1F5C99;">LEVEL 3</div><div style="font-family:'Jost';font-weight:600;font-size:20px;color:#0A2540;margin-top:5px;">Full Dry Wash</div><div style="font-size:13.5px;color:#7C8B9B;margin-top:6px;">from €600</div></div>
+        <div style="border:1px solid #E4E9EE;border-radius:12px;padding:22px 24px;"><div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.16em;color:#1F5C99;">LEVEL 4</div><div style="font-family:'Jost';font-weight:600;font-size:20px;color:#0A2540;margin-top:5px;">Polish / Paint Correction</div><div style="font-size:13.5px;color:#7C8B9B;margin-top:6px;">Custom quote</div></div>
+      </div>
+
+      <!-- comparison matrix -->
+      <div data-reveal style="margin-top:24px;border:1px solid #E4E9EE;border-radius:14px;overflow:hidden;">
+        <div style="overflow-x:auto;">
+          <table style="width:100%;min-width:760px;border-collapse:collapse;font-size:14.5px;">
+            <thead><tr style="background:#F6F9FB;">
+              <th style="text-align:left;padding:16px clamp(18px,2.5vw,28px);font-family:'Jost';font-weight:600;color:#0A2540;width:42%;">What's included</th>
+              <th style="padding:16px 12px;font-family:'Jost';font-weight:600;color:#5A6B7B;">L1</th>
+              <th style="padding:16px 12px;font-family:'Jost';font-weight:600;color:#5A6B7B;">L2</th>
+              <th style="padding:16px 12px;font-family:'Jost';font-weight:600;color:#0A2540;background:#EEF4FA;">L3</th>
+              <th style="padding:16px 12px;font-family:'Jost';font-weight:600;color:#5A6B7B;">L4</th>
+            </tr></thead>
+            <tbody data-extbody></tbody>
+          </table>
+        </div>
+        <div style="padding:14px clamp(18px,2.5vw,28px);border-top:1px solid #EEF2F5;font-size:13px;color:#7C8B9B;font-family:'IBM Plex Mono';letter-spacing:.02em;">L4 fine scratch removal / polish is performed only after surface inspection, a local test and written approval.</div>
+      </div>
+
+      <!-- exterior price table -->
+      <div data-reveal style="margin-top:24px;background:#fff;border:1px solid #E4E9EE;border-radius:14px;overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:18px clamp(20px,3vw,32px);border-bottom:1px solid #EEF2F5;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;color:#5A6B7B;">EXTERIOR PRICES · EUR · PER AIRCRAFT</span><span style="font-size:13px;color:#9AA8B6;">by passenger category (seats)</span></div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;min-width:620px;border-collapse:collapse;font-size:15px;">
+            <thead><tr style="text-align:left;color:#5A6B7B;font-family:'Jost';font-weight:600;">
+              <th style="padding:16px clamp(20px,3vw,32px);font-weight:600;">Category</th>
+              <th style="padding:16px 14px;font-weight:600;">L1 Basic</th>
+              <th style="padding:16px 14px;font-weight:600;">L2 Standard</th>
+              <th style="padding:16px 14px;font-weight:600;">L3 Full Dry Wash</th>
+              <th style="padding:16px clamp(20px,3vw,32px);font-weight:600;">L4 Polish</th>
+            </tr></thead>
+            <tbody style="color:#0A2540;">
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">1–3</td><td style="padding:15px 14px;">€100</td><td style="padding:15px 14px;">€200</td><td style="padding:15px 14px;">€600</td><td style="padding:15px clamp(20px,3vw,32px);color:#7C8B9B;">Custom</td></tr>
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">3–6</td><td style="padding:15px 14px;">€200</td><td style="padding:15px 14px;">€400</td><td style="padding:15px 14px;">€800</td><td style="padding:15px clamp(20px,3vw,32px);color:#7C8B9B;">Custom</td></tr>
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">6–8</td><td style="padding:15px 14px;">€300</td><td style="padding:15px 14px;">€600</td><td style="padding:15px 14px;">€1,000</td><td style="padding:15px clamp(20px,3vw,32px);color:#7C8B9B;">Custom</td></tr>
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">8–10</td><td style="padding:15px 14px;">€400</td><td style="padding:15px 14px;">€800</td><td style="padding:15px 14px;">€1,200</td><td style="padding:15px clamp(20px,3vw,32px);color:#7C8B9B;">Custom</td></tr>
+              <tr style="border-top:1px solid #F0F3F6;"><td style="padding:15px clamp(20px,3vw,32px);font-family:'IBM Plex Mono';font-size:14px;color:#5A6B7B;">10+</td><td style="padding:15px 14px;color:#7C8B9B;">Custom</td><td style="padding:15px 14px;color:#7C8B9B;">Custom</td><td style="padding:15px 14px;color:#7C8B9B;">Custom</td><td style="padding:15px clamp(20px,3vw,32px);color:#7C8B9B;">Custom</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PACKAGES ================= -->
+  <section id="packages" data-section="packages" data-screen-label="Packages" style="padding:clamp(80px,9vw,130px) clamp(20px,5vw,72px);background:#0A2540;color:#fff;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-reveal style="max-width:720px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:28px;height:1px;background:#3F5A78;"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#7FA3C8;">Packages</span></div>
+        <h2 style="font-family:'Jost',sans-serif;font-weight:600;font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.015em;color:#fff;text-wrap:balance;">Bundled service, one baseline to start.</h2>
+        <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:#AFC0D0;margin-top:18px;">Combine interior and exterior levels into a single plan. New fleets begin with the Recommended First Clean to set a documented baseline before moving to recurring maintenance.</p>
+      </div>
+
+      <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:20px;align-items:stretch;">
+        <!-- Basic -->
+        <div data-reveal style="background:#0E2E51;border:1px solid #1E436B;border-radius:16px;padding:30px 28px;display:flex;flex-direction:column;">
+          <div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.14em;color:#7FA3C8;">INT L1 · EXT L1</div>
+          <div style="font-family:'Jost';font-weight:600;font-size:23px;color:#fff;margin-top:10px;">Basic Maintenance</div>
+          <p style="font-size:14.5px;line-height:1.55;color:#9DB3CB;margin-top:10px;flex:1;">For recurring upkeep of already-clean aircraft.</p>
+          <div style="margin-top:22px;font-family:'IBM Plex Mono';font-size:12px;color:#7FA3C8;">from <span data-count="250" data-prefix="€" style="font-family:'Jost';font-weight:600;font-size:30px;color:#fff;">€250</span> <span style="color:#6E8AAB;">/ aircraft</span></div>
+        </div>
+        <!-- Standard -->
+        <div data-reveal data-delay="90" style="background:#0E2E51;border:1px solid #1E436B;border-radius:16px;padding:30px 28px;display:flex;flex-direction:column;">
+          <div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.14em;color:#7FA3C8;">INT L2 · EXT L2</div>
+          <div style="font-family:'Jost';font-weight:600;font-size:23px;color:#fff;margin-top:10px;">Standard Maintenance</div>
+          <p style="font-size:14.5px;line-height:1.55;color:#9DB3CB;margin-top:10px;flex:1;">A full clean inside and out, without polishing.</p>
+          <div style="margin-top:22px;font-family:'IBM Plex Mono';font-size:12px;color:#7FA3C8;">from <span data-count="500" data-prefix="€" style="font-family:'Jost';font-weight:600;font-size:30px;color:#fff;">€500</span> <span style="color:#6E8AAB;">/ aircraft</span></div>
+        </div>
+        <!-- Recommended -->
+        <div data-reveal data-delay="180" style="background:#fff;border:1px solid #fff;border-radius:16px;padding:30px 28px;display:flex;flex-direction:column;position:relative;box-shadow:0 24px 60px -20px rgba(0,0,0,.5);">
+          <div style="position:absolute;top:-12px;left:28px;background:#1F5C99;color:#fff;font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.16em;padding:6px 12px;border-radius:20px;">RECOMMENDED</div>
+          <div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.14em;color:#1F5C99;">INT L2 · EXT L3</div>
+          <div style="font-family:'Jost';font-weight:600;font-size:23px;color:#0A2540;margin-top:10px;">First Clean</div>
+          <p style="font-size:14.5px;line-height:1.55;color:#5A6B7B;margin-top:10px;flex:1;">The baseline for new cooperation — a documented, deep first clean before any maintenance plan.</p>
+          <div style="margin-top:22px;font-family:'IBM Plex Mono';font-size:12px;color:#1F5C99;">from <span data-count="900" data-prefix="€" style="font-family:'Jost';font-weight:600;font-size:30px;color:#0A2540;">€900</span> <span style="color:#9AA8B6;">/ aircraft</span></div>
+        </div>
+        <!-- Premium -->
+        <div data-reveal data-delay="270" style="background:#0E2E51;border:1px solid #1E436B;border-radius:16px;padding:30px 28px;display:flex;flex-direction:column;">
+          <div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.14em;color:#7FA3C8;">INT L2 · EXT L4</div>
+          <div style="font-family:'Jost';font-weight:600;font-size:23px;color:#fff;margin-top:10px;">Premium / Polish</div>
+          <p style="font-size:14.5px;line-height:1.55;color:#9DB3CB;margin-top:10px;flex:1;">Full detail with paint correction — only after inspection, approval and a surface test.</p>
+          <div style="margin-top:22px;font-family:'Jost';font-weight:600;font-size:26px;color:#fff;">Custom quote</div>
+        </div>
+      </div>
+
+      <div data-reveal style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between;padding-top:26px;border-top:1px solid #1E436B;">
+        <p style="font-size:14px;color:#9DB3CB;max-width:620px;line-height:1.55;">Example: a documented First Clean baseline across an 8-aircraft fleet runs around <span data-count="11950" data-prefix="€" style="color:#fff;font-weight:600;">€11,950</span> ex-VAT. Per-aircraft pricing scales with passenger category — see the tables above.</p>
+        <span style="font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.06em;color:#6E8AAB;">PRICES IN EUR · EXCL. VAT · ESTIMATES</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FLEET ================= -->
+  <section id="fleet" data-section="fleet" data-screen-label="Fleet we service" style="padding:clamp(80px,9vw,130px) clamp(20px,5vw,72px);border-top:1px solid #EEF2F5;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-reveal style="max-width:720px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:28px;height:1px;background:#9AA8B6;"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#1F5C99;">Fleet We Service</span></div>
+        <h2 style="font-family:'Jost',sans-serif;font-weight:600;font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.015em;color:#0A2540;text-wrap:balance;">From single-engine to super-midsize.</h2>
+        <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:#45586A;margin-top:18px;">We work across the private fleet spectrum. Pricing follows passenger category — exact cabin configuration is confirmed before work starts.</p>
+      </div>
+
+      <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(216px,1fr));gap:16px;">
+        <div data-reveal style="border:1px solid #E4E9EE;border-radius:14px;padding:26px 24px;"><div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.14em;color:#9AA8B6;">CAT 8–10</div><div style="font-family:'Jost';font-weight:600;font-size:19px;color:#0A2540;margin-top:10px;">Super-midsize &amp; large-cabin jets</div><div style="font-size:14px;color:#5A6B7B;margin-top:8px;">≈ 8–10 passengers · lavatory</div></div>
+        <div data-reveal data-delay="70" style="border:1px solid #E4E9EE;border-radius:14px;padding:26px 24px;"><div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.14em;color:#9AA8B6;">CAT 6–8</div><div style="font-family:'Jost';font-weight:600;font-size:19px;color:#0A2540;margin-top:10px;">Midsize &amp; light jets</div><div style="font-size:14px;color:#5A6B7B;margin-top:8px;">≈ 6–9 passengers · lavatory</div></div>
+        <div data-reveal data-delay="140" style="border:1px solid #E4E9EE;border-radius:14px;padding:26px 24px;"><div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.14em;color:#9AA8B6;">CAT 3–6</div><div style="font-family:'Jost';font-weight:600;font-size:19px;color:#0A2540;margin-top:10px;">Very-light &amp; personal jets</div><div style="font-size:14px;color:#5A6B7B;margin-top:8px;">≈ 4–6 passengers · config-dependent</div></div>
+        <div data-reveal data-delay="210" style="border:1px solid #E4E9EE;border-radius:14px;padding:26px 24px;"><div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.14em;color:#9AA8B6;">CAT 1–3</div><div style="font-family:'Jost';font-weight:600;font-size:19px;color:#0A2540;margin-top:10px;">Single-engine aircraft</div><div style="font-size:14px;color:#5A6B7B;margin-top:8px;">≈ 1–3 passengers + pilot</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section id="process" data-section="process" data-screen-label="Our process" style="padding:clamp(80px,9vw,130px) clamp(20px,5vw,72px);background:#F6F9FB;border-top:1px solid #EEF2F5;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-reveal style="max-width:720px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:28px;height:1px;background:#9AA8B6;"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#1F5C99;">How It Works</span></div>
+        <h2 style="font-family:'Jost',sans-serif;font-weight:600;font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.015em;color:#0A2540;text-wrap:balance;">Inspection. Baseline. Maintenance.</h2>
+      </div>
+
+      <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(264px,1fr));gap:20px;">
+        <div data-reveal style="background:#fff;border:1px solid #E4E9EE;border-radius:16px;padding:34px 30px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="13" cy="13" r="8.5" stroke="#1F5C99" stroke-width="1.6"/><path d="M19.2 19.2 L25 25" stroke="#1F5C99" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <span style="font-family:'Jost';font-weight:300;font-size:44px;color:#DBE3EB;line-height:1;">01</span>
+          </div>
+          <div style="font-family:'Jost';font-weight:600;font-size:21px;color:#0A2540;margin-top:22px;">Inspection</div>
+          <p style="font-size:15px;line-height:1.6;color:#5A6B7B;margin-top:8px;">We check configuration, condition, hangar access and water/dry-wash rules, then confirm scope and price.</p>
+        </div>
+        <div data-reveal data-delay="120" style="background:#fff;border:1px solid #E4E9EE;border-radius:16px;padding:34px 30px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="#1F5C99" stroke-width="1.6"/><path d="M9.5 15 L13.5 19 L20.5 11" stroke="#1F5C99" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span style="font-family:'Jost';font-weight:300;font-size:44px;color:#DBE3EB;line-height:1;">02</span>
+          </div>
+          <div style="font-family:'Jost';font-weight:600;font-size:21px;color:#0A2540;margin-top:22px;">First Clean</div>
+          <p style="font-size:15px;line-height:1.6;color:#5A6B7B;margin-top:8px;">The recommended Interior L2 + Exterior L3 baseline, delivered with a full before/after photo report.</p>
+        </div>
+        <div data-reveal data-delay="240" style="background:#fff;border:1px solid #E4E9EE;border-radius:16px;padding:34px 30px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="#1F5C99" stroke-width="1.6"/><path d="M15 9 V15 L19 17.5" stroke="#1F5C99" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span style="font-family:'Jost';font-weight:300;font-size:44px;color:#DBE3EB;line-height:1;">03</span>
+          </div>
+          <div style="font-family:'Jost';font-weight:600;font-size:21px;color:#0A2540;margin-top:22px;">Recurring Maintenance</div>
+          <p style="font-size:15px;line-height:1.6;color:#5A6B7B;margin-top:8px;">A monthly or bi-weekly plan, usually Level 1–2 exterior depending on how the aircraft is used.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SAFETY ================= -->
+  <section id="safety" data-section="safety" data-screen-label="Safety & products" style="padding:clamp(80px,9vw,130px) clamp(20px,5vw,72px);border-top:1px solid #EEF2F5;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-reveal style="max-width:720px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:28px;height:1px;background:#9AA8B6;"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#1F5C99;">Safety &amp; Products</span></div>
+        <h2 style="font-family:'Jost',sans-serif;font-weight:600;font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.015em;color:#0A2540;text-wrap:balance;">Aviation-safe by default.</h2>
+      </div>
+
+      <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;">
+        <div data-reveal style="border-top:2px solid #0A2540;padding:24px 4px 0;"><div style="font-family:'Jost';font-weight:600;font-size:18px;color:#0A2540;">Manufacturer-compatible</div><p style="font-size:14.5px;line-height:1.6;color:#5A6B7B;margin-top:8px;">Products compatible with aircraft manufacturer or operator recommendations, with SDS available on request.</p></div>
+        <div data-reveal data-delay="70" style="border-top:2px solid #0A2540;padding:24px 4px 0;"><div style="font-family:'Jost';font-weight:600;font-size:18px;color:#0A2540;">Ammonia-free glass</div><p style="font-size:14.5px;line-height:1.6;color:#5A6B7B;margin-top:8px;">Aviation-specific, ammonia-free window products applied with clean microfiber towels.</p></div>
+        <div data-reveal data-delay="140" style="border-top:2px solid #0A2540;padding:24px 4px 0;"><div style="font-family:'Jost';font-weight:600;font-size:18px;color:#0A2540;">pH-neutral dry wash</div><p style="font-size:14.5px;line-height:1.6;color:#5A6B7B;margin-top:8px;">Paint-compatible dry-wash solutions — never aggressive automotive degreasers.</p></div>
+        <div data-reveal style="border-top:2px solid #0A2540;padding:24px 4px 0;"><div style="font-family:'Jost';font-weight:600;font-size:18px;color:#0A2540;">Cabin-safe materials</div><p style="font-size:14.5px;line-height:1.6;color:#5A6B7B;margin-top:8px;">Interior products suited to aviation leather, plastics, carpets and flame-retardant materials.</p></div>
+        <div data-reveal data-delay="70" style="border-top:2px solid #0A2540;padding:24px 4px 0;"><div style="font-family:'Jost';font-weight:600;font-size:18px;color:#0A2540;">Critical systems protected</div><p style="font-size:14.5px;line-height:1.6;color:#5A6B7B;margin-top:8px;">No work on sensors, pitot/static ports, antennas, avionics or panels without operator approval.</p></div>
+        <div data-reveal data-delay="140" style="border-top:2px solid #0A2540;padding:24px 4px 0;"><div style="font-family:'Jost';font-weight:600;font-size:18px;color:#0A2540;">Tested before polish</div><p style="font-size:14.5px;line-height:1.6;color:#5A6B7B;margin-top:8px;">Before Level 4, a local test and written confirmation protect paint, coating and composites.</p></div>
+      </div>
+
+      <div data-reveal style="margin-top:40px;background:#F6F9FB;border:1px solid #E7ECF1;border-radius:14px;padding:clamp(24px,3vw,34px);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 40px;">
+        <div style="grid-column:1/-1;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.16em;color:#5A6B7B;">PRICING &amp; ADJUSTMENTS</div>
+        <div><div style="font-family:'Jost';font-weight:600;font-size:15.5px;color:#0A2540;">Heavy contamination</div><p style="font-size:14px;line-height:1.55;color:#5A6B7B;margin-top:5px;">Severe dirt, oil, hardened insects, mold or odors: 20–60% surcharge, confirmed before work.</p></div>
+        <div><div style="font-family:'Jost';font-weight:600;font-size:15.5px;color:#0A2540;">Access &amp; timing</div><p style="font-size:14px;line-height:1.55;color:#5A6B7B;margin-top:5px;">Night, weekend, urgent deadlines or difficult hangar access: 15–30% surcharge.</p></div>
+        <div><div style="font-family:'Jost';font-weight:600;font-size:15.5px;color:#0A2540;">Special configurations</div><p style="font-size:14px;line-height:1.55;color:#5A6B7B;margin-top:5px;">10+ passenger category and special configurations are quoted individually.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" data-section="contact" data-screen-label="Contact" style="padding:clamp(80px,9vw,130px) clamp(20px,5vw,72px);background:#0A2540;color:#fff;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-reveal style="max-width:680px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;"><span style="width:28px;height:1px;background:#3F5A78;"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#7FA3C8;">Contact</span></div>
+        <h2 style="font-family:'Jost',sans-serif;font-weight:600;font-size:clamp(31px,4vw,48px);line-height:1.08;letter-spacing:-.015em;color:#fff;text-wrap:balance;">Speak with AirShine.</h2>
+        <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:#AFC0D0;margin-top:18px;">Tell us your fleet, base and access requirements. We'll arrange an inspection and confirm a detailed offer.</p>
+      </div>
+
+      <div data-reveal style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#1E436B;border:1px solid #1E436B;border-radius:16px;overflow:hidden;">
+        <a data-email-anchor data-email-user="office" data-email-domain="airshine.online" style="background:#0A2540;padding:32px 30px;transition:background .25s;" style-hover="background:#0E2E51;">
+          <div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.16em;color:#7FA3C8;">EMAIL</div>
+          <div data-email-fill style="font-family:'Jost';font-weight:500;font-size:clamp(18px,1.6vw,21px);color:#fff;margin-top:14px;word-break:break-word;">office at airshine.online</div>
+        </a>
+        <a href="tel:+40736070042" style="background:#0A2540;padding:32px 30px;transition:background .25s;" style-hover="background:#0E2E51;">
+          <div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.16em;color:#7FA3C8;">PHONE</div>
+          <div style="font-family:'Jost';font-weight:500;font-size:clamp(18px,1.6vw,21px);color:#fff;margin-top:14px;">+40 736 070 042</div>
+        </a>
+        <div style="background:#0A2540;padding:32px 30px;">
+          <div style="font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.16em;color:#7FA3C8;">LOCATION</div>
+          <div style="font-family:'Jost';font-weight:500;font-size:clamp(18px,1.6vw,21px);color:#fff;margin-top:14px;">Bucharest, Romania</div>
+        </div>
+      </div>
+
+      <p data-reveal style="margin-top:26px;font-size:13.5px;color:#6E8AAB;font-family:'IBM Plex Mono';letter-spacing:.02em;line-height:1.7;">Estimated offers in EUR, excluding VAT. Final offer confirmed after on-site inspection and approval of working procedures.</p>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer style="background:#071B30;color:#fff;padding:clamp(48px,6vw,72px) clamp(20px,5vw,72px) 40px;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px 60px;justify-content:space-between;align-items:flex-start;">
+      <div style="max-width:340px;">
+        <img src="assets/airshine-logo-white.png" alt="AirShine" style="height:30px;width:auto;display:block;opacity:.95;">
+        <p style="font-size:14px;line-height:1.6;color:#7F97AE;margin-top:18px;">Premium, aviation-safe interior and exterior detailing for private fleets across Europe.</p>
+      </div>
+      <div style="display:flex;gap:48px;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.16em;color:#5E789A;">NAVIGATE</span>
+          <a href="#interior" style="font-size:14.5px;color:#AFC0D0;" style-hover="color:#fff;">Services</a>
+          <a href="#packages" style="font-size:14.5px;color:#AFC0D0;" style-hover="color:#fff;">Packages</a>
+          <a href="#fleet" style="font-size:14.5px;color:#AFC0D0;" style-hover="color:#fff;">Fleet</a>
+          <a href="#process" style="font-size:14.5px;color:#AFC0D0;" style-hover="color:#fff;">Process</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.16em;color:#5E789A;">CONTACT</span>
+          <a data-email-anchor data-email-user="office" data-email-domain="airshine.online" data-email-fill style="font-size:14.5px;color:#AFC0D0;" style-hover="color:#fff;">office at airshine.online</a>
+          <a href="tel:+40736070042" style="font-size:14.5px;color:#AFC0D0;" style-hover="color:#fff;">+40 736 070 042</a>
+          <span style="font-size:14.5px;color:#AFC0D0;">Bucharest, Romania</span>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid #14304B;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;">
+      <span style="font-size:12.5px;color:#5E789A;">© 2025 AirShine. All rights reserved.</span>
+      <span style="font-size:12.5px;color:#5E789A;font-family:'IBM Plex Mono';letter-spacing:.02em;">Prices estimated · EUR · excl. VAT</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    // ---- build exterior comparison matrix rows ----
+    const rows = [
+      ["Before/after & defect photo report", 1,1,1,1],
+      ["Exterior window cleaning: windshield + windows", 1,1,1,1],
+      ["Dry wash of wing leading edges & tail surfaces", 1,1,1,1],
+      ["Nose / radome / propeller; bug & dirt removal", 1,1,1,1],
+      ["Wheel cleaning", 0,1,1,1],
+      ["Dry wash of engine cowls / propeller area", 0,1,1,1],
+      ["Belly spot-cleaning", 0,1,1,1],
+      ["Full fuselage dry wash", 0,0,1,1],
+      ["Full wing dry wash", 0,0,1,1],
+      ["Full aircraft belly dry wash", 0,0,1,1],
+      ["Detailed defect / dent & buckle report", 0,0,1,1],
+      ["Fine scratch removal / polish", 0,0,0,1],
+    ];
+    const tbody = document.querySelector("[data-extbody]");
+    if (tbody) {
+      const check = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 8 L6 11 L12.5 3.5" stroke="#1F5C99" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      const dash = '<span style="color:#C2CCD6;">–</span>';
+      tbody.innerHTML = rows.map((r,ri) => {
+        const cells = [1,2,3,4].map(ci => {
+          const hl = ci===3 ? "background:#F6FAFD;" : "";
+          return `<td style="padding:13px 12px;text-align:center;${hl}">${r[ci] ? check : dash}</td>`;
+        }).join("");
+        return `<tr style="border-top:1px solid #F0F3F6;"><td style="padding:13px clamp(18px,2.5vw,28px);color:#3D4F60;font-size:14.5px;">${r[0]}</td>${cells}</tr>`;
+      }).join("");
+    }
+
+    // ---- assemble email addresses in JS (keeps the raw address out of served HTML
+    //      so server-side email obfuscation can't scramble the contact details) ----
+    document.querySelectorAll("[data-email-anchor]").forEach(a => {
+      const addr = (a.dataset.emailUser || "") + "@" + (a.dataset.emailDomain || "");
+      a.setAttribute("href", "mailto:" + addr);
+      const fill = a.querySelector("[data-email-fill]") || (a.hasAttribute("data-email-fill") ? a : null);
+      if (fill) fill.textContent = addr;
+    });
+
+    // ---- motion is a pure enhancement: base state (template) is always visible ----
+    // This render harness backgrounds the document (document.hidden=true), which
+    // freezes CSS animations + rAF. So we only PLAY motion when actually visible,
+    // and never leave content hidden if it never plays.
+    const fmt = (n) => Math.round(n).toLocaleString("en-US");
+    const reveals = Array.from(document.querySelectorAll("[data-reveal]"));
+    const counters = Array.from(document.querySelectorAll("[data-count]"));
+
+    const playReveals = () => {
+      reveals.forEach((el, i) => {
+        if (el.dataset.played) return;
+        el.dataset.played = "1";
+        const base = parseInt(el.dataset.delay || "0", 10);
+        el.style.animation = "rise .8s cubic-bezier(.22,.61,.36,1) both";
+        el.style.animationDelay = (base + Math.min(i * 38, 650)) + "ms";
+      });
+    };
+    const playCounters = () => {
+      counters.forEach((el, i) => {
+        if (el.dataset.counted) return;
+        el.dataset.counted = "1";
+        const target = parseFloat(el.dataset.count);
+        const prefix = el.dataset.prefix || "";
+        el.textContent = prefix + "0";
+        const dur = 1200;
+        setTimeout(() => {
+          const t0 = performance.now();
+          const tick = (t) => {
+            let p = Math.min(1, (t - t0) / dur);
+            p = 1 - Math.pow(1 - p, 3);
+            el.textContent = prefix + fmt(target * p);
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }, 350 + i * 100);
+      });
+    };
+    const run = () => { playReveals(); playCounters(); };
+
+    // Absolute safety net: regardless of whether animations/rAF ever advance
+    // (some embed contexts freeze the document timeline), force the final,
+    // fully-visible state so content is NEVER left hidden.
+    const finalize = () => {
+      reveals.forEach(el => { el.style.animation = "none"; el.style.opacity = ""; el.style.transform = ""; });
+      counters.forEach(el => { el.textContent = (el.dataset.prefix || "") + fmt(parseFloat(el.dataset.count)); });
+    };
+
+    if (document.hidden) {
+      const onVis = () => {
+        if (!document.hidden) { document.removeEventListener("visibilitychange", onVis); run(); }
+      };
+      document.addEventListener("visibilitychange", onVis);
+    } else {
+      run();
+    }
+    setTimeout(finalize, 2200);
+  }
+}
+</script>
+</body>
+</html>

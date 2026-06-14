@@ -1,31 +1,30 @@
-# AGENTS — Guidance for AI coding agents
+# Repository Guidelines
 
-Purpose
-- Brief, actionable notes to help AI agents work productively in this repo.
+## Project Structure & Module Organization
 
-How to run
-- Install: `npm install`
-- Dev: `npm run dev` (Next.js dev server)
-- Build: `npm run build` / `npm start` for production
+This is a Next.js 16 App Router project. Route UI lives in `app/`: `app/layout.tsx` defines the root HTML/body shell, `app/page.tsx` is the home route, and `app/globals.css` holds global Tailwind/CSS styles. Static files are served from `public/` and referenced from the site root, for example `/next.svg` or `/AirShine.dc.html`. Root config files include `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, `postcss.config.mjs`, and `pnpm-workspace.yaml`.
 
-Project overview
-- Framework: Next.js (App Router). See [README.md](README.md) for full details.
-- Single-page site exported from a design tool; most logic lives in `app/page.js`.
+## Build, Test, and Development Commands
 
-Key files
-- `app/site-markup.js`: static page markup — update business text, prices, and image placeholders.
-- `app/page.js`: interactivity and runtime effects (scroll reveal, parallax, sliders).
-- `app/layout.js` and `app/globals.css`: page shell and global styles.
-- `public/`: static assets for images and media.
+Use pnpm because the repo includes `pnpm-lock.yaml`.
 
-Agent conventions
-- Prefer editing `app/site-markup.js` for content changes rather than restructuring the app.
-- Link to existing docs instead of copying: use [README.md](README.md) for deployment and run instructions.
-- Keep changes minimal and focused; preserve original structure unless a clear refactor is requested.
+- `pnpm dev`: start the local Next dev server with hot reload.
+- `pnpm build`: create a production build in `.next/`.
+- `pnpm start`: serve the production build after `pnpm build`.
+- `pnpm lint`: run ESLint using Next core web vitals and TypeScript rules.
 
-Common pitfalls
-- The design was converted from a runtime export; avoid reintroducing the original design engine.
-- Images are placeholders implemented via CSS backgrounds — replace them in `public/` and update the CSS accordingly.
+## Coding Style & Naming Conventions
 
-If unsure
-- Ask for clarification before large refactors or dependency upgrades.
+Write TypeScript/React components in `.tsx` files and prefer server components unless interactivity requires `"use client"`. Keep components PascalCase, route folders lowercase, and reusable helpers camelCase. Use the configured `@/*` path alias for root-relative imports when it improves clarity. The codebase uses strict TypeScript and Tailwind utility classes; keep styling close to components unless it is truly global. Follow the existing two-space indentation and double-quote import style.
+
+## Testing Guidelines
+
+No test framework is configured yet. Before merging behavior changes, run `pnpm lint` and `pnpm build`. If tests are added, colocate them with the relevant module or place shared suites under a future `tests/` directory, using names like `component.test.tsx` or `feature.spec.ts`.
+
+## Commit & Pull Request Guidelines
+
+Git history currently contains only the initial Create Next App commit, so no detailed convention is established. Use short, imperative commit messages such as `Add support page assets` or `Fix home layout spacing`. Pull requests should include a concise summary, verification steps, linked issues when applicable, and screenshots for visible UI changes.
+
+## Agent-Specific Instructions
+
+Next.js APIs in this repo may differ from older versions. Before changing Next-specific code, read the relevant guide in `node_modules/next/dist/docs/` and heed deprecation notices, especially for App Router file conventions and CLI behavior.
