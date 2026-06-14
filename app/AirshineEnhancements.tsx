@@ -22,8 +22,80 @@ export default function AirshineEnhancements() {
       }
     });
 
-    const reveals = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-    const counters = Array.from(document.querySelectorAll<HTMLElement>("[data-count]"));
+    const reveals = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]"),
+    );
+    const counters = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-count]"),
+    );
+    const tableFrames = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-table-scroll-frame]"),
+    );
+
+    const setupTableScrollCues = () => {
+      const cleanup: (() => void)[] = [];
+
+      tableFrames.forEach((frame) => {
+        const scroll = frame.querySelector<HTMLElement>("[data-table-scroll]");
+
+        if (!scroll) return;
+
+        let frameHandle = 0;
+        const update = () => {
+          if (frameHandle) {
+            window.cancelAnimationFrame(frameHandle);
+          }
+
+          frameHandle = window.requestAnimationFrame(() => {
+            frameHandle = 0;
+            const canScroll = scroll.scrollWidth > scroll.clientWidth + 1;
+            const atEnd =
+              scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 2;
+
+            frame.dataset.scrollable = canScroll ? "true" : "false";
+            frame.dataset.scrollEnd = !canScroll || atEnd ? "true" : "false";
+          });
+        };
+
+        scroll.addEventListener("scroll", update, { passive: true });
+
+        let observer: ResizeObserver | null = null;
+        const ResizeObserverConstructor = (
+          window as Window & { ResizeObserver?: typeof ResizeObserver }
+        ).ResizeObserver;
+
+        if (ResizeObserverConstructor) {
+          observer = new ResizeObserverConstructor(update);
+          observer.observe(scroll);
+
+          const table = scroll.querySelector("table");
+          if (table) {
+            observer.observe(table);
+          }
+        } else {
+          window.addEventListener("resize", update);
+        }
+
+        update();
+
+        cleanup.push(() => {
+          if (frameHandle) {
+            window.cancelAnimationFrame(frameHandle);
+          }
+
+          scroll.removeEventListener("scroll", update);
+          observer?.disconnect();
+
+          if (!observer) {
+            window.removeEventListener("resize", update);
+          }
+        });
+      });
+
+      return cleanup;
+    };
+
+    const cleanupTableScrollCues = setupTableScrollCues();
 
     const playReveals = () => {
       reveals.forEach((element, index) => {
@@ -104,6 +176,7 @@ export default function AirshineEnhancements() {
 
     return () => {
       window.clearTimeout(finalizeTimer);
+      cleanupTableScrollCues.forEach((cleanup) => cleanup());
       if (onVisibilityChange) {
         document.removeEventListener("visibilitychange", onVisibilityChange);
       }

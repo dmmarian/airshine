@@ -510,8 +510,59 @@ select {
   color: #9aa8b6;
 }
 
+.airshine-table-scroll-frame {
+  position: relative;
+}
+
+.airshine-table-scroll-frame::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff 82%);
+  content: "";
+  inset: 0 0 0 auto;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.22s ease;
+  width: min(78px, 24%);
+  z-index: 2;
+}
+
 .airshine-table-scroll {
+  -webkit-overflow-scrolling: touch;
   overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.airshine-table-scroll:focus-visible {
+  outline: 2px solid var(--airshine-blue);
+  outline-offset: -2px;
+}
+
+.airshine-table-scroll-cue {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #dce5ed;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.12);
+  color: var(--airshine-blue);
+  display: flex;
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 11px;
+  gap: 5px;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  padding: 7px 9px;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  text-transform: uppercase;
+  top: 12px;
+  transform: translateX(4px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  z-index: 3;
+}
+
+.airshine-table-scroll-cue svg {
+  flex: none;
 }
 
 .airshine-table {
@@ -1393,12 +1444,27 @@ a.airshine-contact-card:hover {
   .airshine-coverage-notes p {
     grid-column: auto;
   }
+
+  .airshine-table-scroll-frame[data-scrollable="pending"]::after,
+  .airshine-table-scroll-frame[data-scrollable="true"][data-scroll-end="false"]::after {
+    opacity: 1;
+  }
+
+  .airshine-table-scroll-frame[data-scrollable="pending"]
+    .airshine-table-scroll-cue,
+  .airshine-table-scroll-frame[data-scrollable="true"][data-scroll-end="false"]
+    .airshine-table-scroll-cue {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .airshine-header__inner,
   .airshine-logo,
-  .airshine-phone {
+  .airshine-phone,
+  .airshine-table-scroll-frame::after,
+  .airshine-table-scroll-cue {
     transition: none;
   }
 }

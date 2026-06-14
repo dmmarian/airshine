@@ -345,6 +345,26 @@ function ArrowDownIcon() {
   );
 }
 
+function ScrollMoreIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M3 7 H11 M8 4 L11 7 L8 10"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
 function ProcessIcon({ name }: { name: string }) {
   if (name === "search") {
     return (
@@ -407,6 +427,37 @@ function ProcessIcon({ name }: { name: string }) {
   );
 }
 
+function TableScrollFrame({
+  children,
+  label,
+}: {
+  children: ReactNode;
+  label: string;
+}) {
+  return (
+    <div
+      className="airshine-table-scroll-frame"
+      data-scroll-end="false"
+      data-scrollable="pending"
+      data-table-scroll-frame
+    >
+      <div
+        aria-label={label}
+        className="airshine-table-scroll"
+        data-table-scroll
+        role="region"
+        tabIndex={0}
+      >
+        {children}
+      </div>
+      <div aria-hidden="true" className="airshine-table-scroll-cue">
+        <span>More</span>
+        <ScrollMoreIcon />
+      </div>
+    </div>
+  );
+}
+
 function PriceTable({
   title,
   note,
@@ -433,7 +484,7 @@ function PriceTable({
         <strong>{title}</strong>
         <span>{note}</span>
       </div>
-      <div className="airshine-table-scroll">
+      <TableScrollFrame label={`${title} table, horizontally scrollable`}>
         <table
           className="airshine-table"
           style={{ "--table-min": minWidth } as CSSProperties}
@@ -464,7 +515,7 @@ function PriceTable({
             ))}
           </tbody>
         </table>
-      </div>
+      </TableScrollFrame>
       {footnote ? <div className="airshine-table-note">{footnote}</div> : null}
     </div>
   );
@@ -487,7 +538,7 @@ function CoverageTable() {
           <strong>ROMANIA COVERAGE · TRAVEL FEES</strong>
           <span>estimated from LRBS</span>
         </div>
-        <div className="airshine-table-scroll">
+        <TableScrollFrame label="Romania coverage travel fees table, horizontally scrollable">
           <table
             className="airshine-table"
             style={{ "--table-min": "680px" } as CSSProperties}
@@ -516,7 +567,7 @@ function CoverageTable() {
               ))}
             </tbody>
           </table>
-        </div>
+        </TableScrollFrame>
         <label
           className="airshine-coverage-toggle-label"
           htmlFor="coverage-routes-toggle"
@@ -790,7 +841,7 @@ export default function Home() {
           </div>
 
           <div className="airshine-table-card">
-            <div className="airshine-table-scroll">
+            <TableScrollFrame label="Exterior detailing inclusions comparison table, horizontally scrollable">
               <table className="airshine-table airshine-matrix">
                 <thead>
                   <tr>
@@ -818,7 +869,7 @@ export default function Home() {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScrollFrame>
             <div className="airshine-table-note">
               L4 fine scratch removal / polish is performed only after surface
               inspection, a local test and written approval.
