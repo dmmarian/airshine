@@ -6,6 +6,7 @@ import AirshineEnhancements from "./AirshineEnhancements";
 const navLinks = [
   { href: "#interior", label: "Services" },
   { href: "#packages", label: "Packages" },
+  { href: "#coverage", label: "Coverage" },
   { href: "#fleet", label: "Fleet" },
   { href: "#process", label: "Process" },
   { href: "#contact", label: "Contact" },
@@ -155,6 +156,33 @@ const packages = [
     delay: 270,
   },
 ];
+
+const coverageRoutes = [
+  ["București Henri Coandă", "LROP", "Otopeni", "€60"],
+  ["Brașov-Ghimbav", "LRBV", "Brașov", "€170"],
+  ["Craiova", "LRCV", "Craiova", "€230"],
+  ["Constanța Mihail Kogălniceanu", "LRCK", "Constanța", "€240"],
+  ["Tulcea Delta Dunării", "LRTC", "Tulcea", "€270"],
+  ["Sibiu", "LRSB", "Sibiu", "€260"],
+  ["Bacău George Enescu", "LRBC", "Bacău", "€280"],
+  ["Iași", "LRIA", "Iași", "€350"],
+  ["Suceava Ștefan cel Mare", "LRSV", "Suceava", "€390"],
+  ["Cluj-Napoca Avram Iancu", "LRCL", "Cluj-Napoca", "€390"],
+  ["Târgu Mureș Transilvania", "LRTM", "Târgu Mureș", "€300"],
+  ["Oradea", "LROD", "Oradea", "€510"],
+  ["Arad", "LRAR", "Arad", "€470"],
+  ["Timișoara Traian Vuia", "LRTR", "Timișoara", "€460"],
+  ["Satu Mare", "LRSM", "Satu Mare", "€520"],
+  ["Baia Mare Maramureș", "LRBM", "Baia Mare", "€510"],
+  ["Caransebeș", "LRCS", "Caransebeș", "€400"],
+  ["Aerodrom Clinceni", "LRCN", "Ilfov", "€70"],
+  ["Aerodrom Strejnic", "LRPW", "Ploiești", "€100"],
+  ["Aerodrom Alexeni", "LRAX", "Ialomița", "€110"],
+  ["Aerodrom Tuzla", "LRTZ", "Constanța", "€260"],
+  ["Aerodrom Ghimbav", "LRGB", "Brașov", "€170"],
+  ["Aerodrom Deva-Săulești", "LRDV", "Hunedoara", "€350"],
+  ["Aerodrom Frătăuți", "-", "Suceava", "€400"],
+] satisfies [string, string, string, string][];
 
 const fleetItems = [
   {
@@ -438,6 +466,68 @@ function PriceTable({
         </table>
       </div>
       {footnote ? <div className="airshine-table-note">{footnote}</div> : null}
+    </div>
+  );
+}
+
+function CoverageTable() {
+  return (
+    <div className="airshine-coverage-table">
+      <input
+        aria-label="Show or hide all coverage routes"
+        className="airshine-coverage-toggle"
+        id="coverage-routes-toggle"
+        type="checkbox"
+      />
+      <div className="airshine-table-card airshine-table-card--spacious" data-reveal>
+        <div className="airshine-table-head">
+          <strong>ROMANIA COVERAGE · TRAVEL FEES</strong>
+          <span>estimated from LRBS</span>
+        </div>
+        <div className="airshine-table-scroll">
+          <table
+            className="airshine-table"
+            style={{ "--table-min": "680px" } as CSSProperties}
+          >
+            <thead>
+              <tr>
+                <th>Airport / Aerodrome</th>
+                <th>ICAO</th>
+                <th>Locality</th>
+                <th>Travel fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              {coverageRoutes.map((row, index) => (
+                <tr
+                  className={index >= 4 ? "airshine-coverage-extra-row" : undefined}
+                  key={row.join("-")}
+                >
+                  {row.map((cell) => (
+                    <td key={`${row[0]}-${cell}`}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <label
+          className="airshine-coverage-toggle-label"
+          htmlFor="coverage-routes-toggle"
+        >
+          <span className="airshine-coverage-toggle-label__show">
+            Show all routes
+          </span>
+          <span className="airshine-coverage-toggle-label__hide">
+            Collapse routes
+          </span>
+          <ArrowDownIcon />
+        </label>
+        <div className="airshine-table-note">
+          Estimated travel fees in EUR. Final availability and timing are
+          confirmed after access, aircraft location and work-scope review.
+        </div>
+      </div>
     </div>
   );
 }
@@ -762,6 +852,41 @@ export default function Home() {
           </p>
           <span>PRICES IN EUR · ESTIMATES · AIRPORT FEES MAY APPLY</span>
         </div>
+      </Section>
+
+      <Section id="coverage" soft>
+        <div
+          className="airshine-grid airshine-coverage-intro"
+          style={
+            {
+              "--min": "320px",
+              "--gap": "clamp(32px, 5vw, 72px)",
+            } as CSSProperties
+          }
+        >
+          <SectionIntro
+            eyebrow="Romania Coverage"
+            title="Airport support from our Bucharest base."
+            copy="AirShine can support detailing work at Romanian airports and aerodromes from LRBS, with travel fees estimated by road distance. Availability, timing and final access requirements are confirmed before dispatch."
+          />
+          <div className="airshine-coverage-notes" data-delay="120" data-reveal>
+            <div>
+              <span>BASE</span>
+              <strong>Bucharest / LRBS</strong>
+            </div>
+            <div>
+              <span>ROUTES LISTED</span>
+              <strong>{coverageRoutes.length} destinations</strong>
+            </div>
+            <p>
+              Travel fees are separate from detailing package prices and exclude
+              airport, FBO, hangar, handler or access fees charged by the
+              location.
+            </p>
+          </div>
+        </div>
+
+        <CoverageTable />
       </Section>
 
       <Section id="fleet">
