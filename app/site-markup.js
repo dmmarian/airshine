@@ -40,9 +40,8 @@ export function siteHtml(t) {
 
   <!-- ================= NAV ================= -->
   <nav id="acnav" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid rgba(198,166,103,0);transition:background .4s ease,border-color .4s ease,box-shadow .4s ease;">
-    <a href="#top" style="text-decoration:none;display:flex;align-items:center;gap:11px;">
-      <span style="width:8px;height:8px;background:#c6a667;transform:rotate(45deg);display:inline-block;"></span>
-      <span style="font-family:'Libre Caslon Display',serif;font-size:19px;letter-spacing:0.06em;color:#f4f1ea;white-space:nowrap;">AirShine</span>
+    <a href="#top" style="text-decoration:none;display:flex;align-items:center;">
+      <img src="/white_logo.png" alt="AirShine" style="height:38px;width:auto;display:block;" />
     </a>
     <div style="display:flex;gap:26px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">
       <a data-navlink href="#about" style="text-decoration:none;color:rgba(159,168,184,0.85);transition:color .3s;">${t.nav.about}</a>
