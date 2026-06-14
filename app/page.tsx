@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import Image from "next/image";
+import AirshineHeader from "./AirshineHeader";
 import AirshineEnhancements from "./AirshineEnhancements";
 
 const navLinks = [
@@ -236,7 +237,7 @@ const adjustments = [
   },
   {
     title: "Access & timing",
-    copy: "Night, weekend, urgent deadlines or difficult hangar access: 15–30% surcharge.",
+    copy: "Night, weekend, urgent deadlines or difficult hangar access: may add up to 15–30% surcharge.",
   },
   {
     title: "Special configurations",
@@ -489,33 +490,7 @@ export default function Home() {
     <main className="airshine-page">
       <AirshineEnhancements />
 
-      <header className="airshine-header">
-        <div className="airshine-header__inner">
-          <a className="airshine-logo" href="#top" aria-label="AirShine home">
-            <Image
-              src="/airshine-logo.png"
-              alt="AirShine"
-              width={119}
-              height={30}
-              priority
-            />
-          </a>
-          <nav className="airshine-nav" aria-label="Main navigation">
-            {navLinks.map((link) => (
-              <a
-                className="airshine-nav__link"
-                href={link.href}
-                key={link.href}
-              >
-                {link.label}
-              </a>
-            ))}
-            <a className="airshine-phone" href="tel:+40736070042">
-              +40 736 070 042
-            </a>
-          </nav>
-        </div>
-      </header>
+      <AirshineHeader navLinks={navLinks} />
 
       <section className="airshine-hero" id="top">
         <Image

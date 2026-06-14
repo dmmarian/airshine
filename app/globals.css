@@ -108,11 +108,14 @@ select {
   gap: 24px;
   flex-wrap: wrap;
   padding: 16px clamp(20px, 5vw, 72px);
+  transition: gap 0.25s ease, padding 0.25s ease;
 }
 
 .airshine-logo {
   display: flex;
   align-items: center;
+  max-height: 30px;
+  transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.25s ease;
 }
 
 .airshine-nav {
@@ -145,9 +148,11 @@ select {
   color: var(--airshine-ink);
   border: 1px solid #d7dee6;
   border-radius: 40px;
+  max-width: 180px;
   padding: 8px 16px;
   white-space: nowrap;
-  transition: border-color 0.25s, background 0.25s;
+  transition: border-color 0.25s, background 0.25s, max-width 0.25s ease,
+    opacity 0.2s ease, padding 0.25s ease, transform 0.25s ease;
 }
 
 .airshine-phone:hover {
@@ -1042,6 +1047,31 @@ a.airshine-contact-card:hover {
     row-gap: 12px;
   }
 
+  .airshine-header--compact .airshine-header__inner {
+    gap: 0;
+    padding-bottom: 12px;
+    padding-top: 12px;
+  }
+
+  .airshine-header--compact .airshine-logo {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+
+  .airshine-header--compact .airshine-phone {
+    border-width: 0;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+  }
+
   .airshine-hero__label {
     flex-wrap: wrap;
     justify-content: center;
@@ -1049,5 +1079,13 @@ a.airshine-contact-card:hover {
 
   .airshine-hero h1 br {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .airshine-header__inner,
+  .airshine-logo,
+  .airshine-phone {
+    transition: none;
   }
 }
