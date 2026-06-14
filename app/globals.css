@@ -1,0 +1,60 @@
+/* Fonts (the design uses these literal family names in its inline styles) */
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Manrope:wght@300;400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #070b13;
+}
+::selection {
+  background: rgba(198, 166, 103, 0.32);
+  color: #fff;
+}
+
+/* Scroll-reveal: elements start hidden (inline styles) and snap visible once marked shown */
+[data-reveal][data-shown] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Count-up stats render their current value via this generated content */
+[data-count]::after {
+  content: attr(data-disp);
+}
+
+/* "What's included" toggle: panels hidden by default; page.js injects a
+   stylesheet to reveal the active panel and highlight its button */
+[data-inc-panel] {
+  display: none;
+}
+[data-inc-btn] {
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+@keyframes acFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.35;
+  }
+}
+@keyframes acDot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
