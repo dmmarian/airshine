@@ -774,13 +774,8 @@ export default function Home() {
 
         <div className="airshine-package-summary" data-reveal>
           <p>
-            Example: a documented First Clean baseline across an 8-aircraft
-            fleet runs around{" "}
-            <strong data-count="11950" data-prefix="€">
-              €11,950
-            </strong>{" "}
-            ex-VAT. Per-aircraft pricing scales with passenger category — see
-            the tables above.
+            Per-aircraft pricing scales with passenger category — see the tables
+            above.
           </p>
           <span>PRICES IN EUR · EXCL. VAT · ESTIMATES</span>
         </div>

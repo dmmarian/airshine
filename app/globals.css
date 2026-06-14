@@ -607,6 +607,10 @@ select {
   padding: 13px 12px;
 }
 
+.airshine-matrix td > svg {
+  margin: 0 auto;
+}
+
 .airshine-matrix td:first-child {
   color: #3d4f60;
   font-family: var(--font-hanken), sans-serif;
