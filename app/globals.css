@@ -115,9 +115,12 @@ select {
 }
 
 .airshine-nav__link {
+  align-items: center;
+  display: inline-flex;
   font-family: var(--font-jost), sans-serif;
   font-weight: 500;
   font-size: 15px;
+  gap: 8px;
   letter-spacing: 0.01em;
   color: var(--airshine-muted);
   border-bottom: 1.5px solid transparent;
@@ -125,9 +128,15 @@ select {
   transition: color 0.25s, border-color 0.25s;
 }
 
-.airshine-nav__link:hover {
+.airshine-nav__link:hover,
+.airshine-nav__link--active {
   color: var(--airshine-ink);
   border-color: currentColor;
+}
+
+.airshine-nav__icon {
+  display: none;
+  flex: none;
 }
 
 .airshine-phone {
@@ -1303,8 +1312,55 @@ a.airshine-contact-card:hover {
     justify-content: center;
   }
 
+  .airshine-header__inner {
+    gap: 16px;
+  }
+
   .airshine-nav {
-    row-gap: 12px;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .airshine-nav__link {
+    align-items: center;
+    border: 1px solid #d7dee6;
+    border-radius: 999px;
+    height: 38px;
+    justify-content: center;
+    padding: 0;
+    width: 38px;
+  }
+
+  .airshine-nav__link:hover,
+  .airshine-nav__link--active {
+    background: #f4f8fc;
+    border-color: var(--airshine-ink);
+  }
+
+  .airshine-nav__link--active {
+    color: #fff;
+    background: var(--airshine-ink);
+  }
+
+  .airshine-nav__icon {
+    display: block;
+  }
+
+  .airshine-nav__label {
+    block-size: 1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    inline-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+  }
+
+  .airshine-phone {
+    display: none;
   }
 
   .airshine-header--compact .airshine-header__inner {
@@ -1318,17 +1374,6 @@ a.airshine-contact-card:hover {
     opacity: 0;
     overflow: hidden;
     transform: translateY(-10px);
-    pointer-events: none;
-  }
-
-  .airshine-header--compact .airshine-phone {
-    border-width: 0;
-    max-width: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding-left: 0;
-    padding-right: 0;
-    transform: translateY(-6px);
     pointer-events: none;
   }
 

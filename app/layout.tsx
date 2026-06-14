@@ -44,7 +44,7 @@ export default function RootLayout({
       lang="en"
       className={`${jost.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable}`}
     >
-      <body>{children}</body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
