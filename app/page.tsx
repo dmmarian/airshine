@@ -777,7 +777,7 @@ export default function Home() {
             Per-aircraft pricing scales with passenger category — see the tables
             above.
           </p>
-          <span>PRICES IN EUR · EXCL. VAT · ESTIMATES</span>
+          <span>PRICES IN EUR · ESTIMATES</span>
         </div>
       </Section>
 
@@ -895,8 +895,8 @@ export default function Home() {
         </div>
 
         <p className="airshine-contact-note" data-reveal>
-          Estimated offers in EUR, excluding VAT. Final offer confirmed after
-          on-site inspection and approval of working procedures.
+          Estimated offers in EUR. Final offer confirmed after on-site
+          inspection and approval of working procedures.
         </p>
       </Section>
 
@@ -933,7 +933,7 @@ export default function Home() {
         </div>
         <div className="airshine-footer__bottom">
           <span>© 2025 AirShine. All rights reserved.</span>
-          <span>Prices estimated · EUR · excl. VAT</span>
+          <span>Prices estimated · EUR</span>
         </div>
       </footer>
     </main>
