@@ -496,13 +496,13 @@ export default function Home() {
         <Image
           alt=""
           aria-hidden="true"
-          className="airshine-hero__jet"
-          height={126}
-          priority
-          src="/airshine-jet.png"
-          width={651}
+          className="airshine-hero__image"
+          fill
+          preload
+          sizes="100vw"
+          src="/airplane.jpg"
         />
-        <div className="airshine-hero__glow" aria-hidden="true" />
+        <div className="airshine-hero__shade" aria-hidden="true" />
         <div className="airshine-hero__content">
           <div className="airshine-hero__label" data-delay="0" data-reveal>
             <span>Private Aviation Detailing · Europe</span>
